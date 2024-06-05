@@ -1,0 +1,19 @@
+﻿type de donnée;Nom;Adresse;Code postal;Commune;latitude;longitude;point_geo
+bâtiment;IUT Roméro;25 cours Monseigneur Roméro;91025;Évry-Courcouronnes;48.622903;2.427412;48.622903, 2.427412
+Service;Maison de la santé;Ile de France;91025;Évry-Courcouronnes;48.624067;2.427220;48.624067, 2.42722
+Service;SUAPS;1er Cycles;91025;Évry-Courcouronnes;48.623253;2.424634;48.623253, 2.424634
+Service;DSE (Direction de la Scolarité et des Etudes);Ile de France;91025;Évry-Courcouronnes;48.624067;2.427220;48.624067, 2.42722
+Service;DRRI (Direction de la Recherche et des Relations Internationales);Ile de France;91025;Évry-Courcouronnes;48.624067;2.427220;48.624067, 2.42722
+Service;DVEC (Direction de la Vie Etudiante et de Campus);Rez-de-chaussée, bureau 42;91025;Évry-Courcouronnes;48.624067;2.427220;48.624067, 2.42722
+bâtiment;Maupertuis;3 rue du Père Jarlan;91025;Évry-Courcouronnes;48.623585;2.427220;48.623585, 2.42722
+bâtiment;IBGBI;23 boulevard de France;91025;Évry-Courcouronnes;48.625610;2.440267;48.62561, 2.440267
+bâtiment;IUT Bretigny;Chemin de la Tuilerie;91220;Brétigny-sur-Orge;48.618734;2.305652;48.618734, 2.305652
+bâtiment;IUT Juvisy;6 rue Piver, parc de la mairie;91260;Juvisy-sur-Orge;48.690408;2.373621;48.690408, 2.373621
+bâtiment;Ile de France;23 boulevard François Mitterrand;91025;Évry-Courcouronnes;48.624067;2.427220;48.624067, 2.42722
+bâtiment;Bibliothèque Universitaire;2 rue André Lalande;91025;Évry-Courcouronnes;48.623718;2.425684;48.623718, 2.425684
+bâtiment;1ers Cycles;1 rue Pierre Bérégovoy;91025;Évry-Courcouronnes;48.623253;2.424634;48.623253, 2.424634
+bâtiment;Facteur Cheval;2 rue du Facteur Cheval;91025;Évry-Courcouronnes;48.631217;2.431325;48.631217, 2.431325
+bâtiment;Pelvoux;36-40 rue Pelvoux;91080;Évry-Courcouronnes;48.613144;2.428180;48.613144, 2.42818
+bâtiment;Emulateur - CMA;31 cours Blaise Pascal;91025;Évry-Courcouronnes;48.625290;2.430526;48.62529, 2.430526
+bâtiment;Espace Prep'Avenir;4 cours Blaise Pascal;91025;Évry-Courcouronnes;48.628001;2.430429;48.628001, 2.430429
+Service;DOIP (Direction de l'Orientation et de l'Insertion Professionnelle);Ile de France;91025;Évry-Courcouronnes;48.624067;2.427220;48.624067, 2.42722

@@ -1,0 +1,513 @@
+﻿Annee_de_linscription;GENRE;Cursus LMD;Regime d'inscription;Domaine de formation;Type de bac obtenu;Nombre d'étudiants;Nombre de nouveaux bacheliers
+2020/2021;Femme;cursus L;initiale;Arts, Lettres et Langues;Bac général;319.0;102.0
+2020/2021;Femme;cursus L;initiale;Arts, Lettres et Langues;Bac techno;40.0;4.0
+2020/2021;Femme;cursus L;initiale;Arts, Lettres et Langues;Bac étranger;17.0;
+2020/2021;Femme;cursus L;initiale;Arts, Lettres et Langues;Equivalence;2.0;1.0
+2020/2021;Femme;cursus L;initiale;Droit, Economie, Gestion;Bac général;1096.0;414.0
+2020/2021;Femme;cursus L;initiale;Droit, Economie, Gestion;Bac techno;329.0;133.0
+2020/2021;Femme;cursus L;initiale;Droit, Economie, Gestion;Bac pro;75.0;13.0
+2020/2021;Femme;cursus L;initiale;Droit, Economie, Gestion;Equivalence;5.0;
+2020/2021;Femme;cursus L;initiale;Sciences Humaines et Sociales;Bac pro;67.0;14.0
+2020/2021;Femme;cursus L;initiale;Sciences Humaines et Sociales;Bac étranger;12.0;2.0
+2020/2021;Femme;cursus L;initiale;Multi-domaine;Bac général;23.0;12.0
+2020/2021;Femme;cursus L;initiale;Hors domaine;Bac général;17.0;7.0
+2020/2021;Femme;cursus L;initiale;Hors domaine;Bac techno;25.0;21.0
+2020/2021;Femme;cursus L;initiale;Hors domaine;Bac pro;37.0;34.0
+2020/2021;Femme;cursus L;initiale;Hors domaine;Bac étranger;4.0;
+2020/2021;Femme;cursus L;apprentis;Droit, Economie, Gestion;Bac général;294.0;36.0
+2020/2021;Femme;cursus L;apprentis;Droit, Economie, Gestion;Equivalence;3.0;
+2020/2021;Femme;cursus L;apprentis;Sciences Humaines et Sociales;Bac techno;14.0;
+2020/2021;Femme;cursus L;apprentis;Sciences, Technologies, Santé;Equivalence;1.0;
+2020/2021;Femme;cursus L;continue;Sciences Humaines et Sociales;Bac pro;1.0;
+2020/2021;Femme;cursus L;continue;Sciences, Technologies, Santé;Bac pro;1.0;
+2020/2021;Femme;cursus L;continue;Hors domaine;Equivalence;1.0;
+2020/2021;Femme;cursus M;initiale;Hors domaine;Bac techno;17.0;
+2020/2021;Femme;cursus M;initiale;Hors domaine;Bac étranger;3.0;
+2020/2021;Femme;cursus M;initiale;Hors domaine;Equivalence;4.0;
+2020/2021;Femme;cursus M;apprentis;Arts, Lettres et Langues;Bac général;15.0;
+2020/2021;Femme;cursus M;apprentis;Arts, Lettres et Langues;Bac techno;3.0;
+2020/2021;Femme;cursus M;apprentis;Arts, Lettres et Langues;Bac pro;1.0;
+2020/2021;Femme;cursus M;apprentis;Droit, Economie, Gestion;Bac pro;3.0;
+2020/2021;Femme;cursus M;apprentis;Droit, Economie, Gestion;Equivalence;1.0;
+2020/2021;Femme;cursus M;apprentis;Sciences Humaines et Sociales;Bac étranger;5.0;
+2020/2021;Femme;cursus M;continue;Droit, Economie, Gestion;Bac pro;3.0;
+2020/2021;Femme;cursus D;initiale;Domaine inconnu;Bac général;49.0;
+2020/2021;Homme;cursus L;initiale;Arts, Lettres et Langues;Bac techno;36.0;9.0
+2020/2021;Homme;cursus L;initiale;Arts, Lettres et Langues;Bac étranger;9.0;
+2020/2021;Homme;cursus L;initiale;Sciences, Technologies, Santé;Bac général;1455.0;455.0
+2020/2021;Homme;cursus L;initiale;Hors domaine;Bac pro;47.0;42.0
+2020/2021;Homme;cursus L;initiale;Hors domaine;Bac étranger;1.0;
+2020/2021;Homme;cursus L;initiale;Hors domaine;Sans bac;1.0;1.0
+2020/2021;Homme;cursus L;apprentis;Droit, Economie, Gestion;Bac pro;27.0;1.0
+2020/2021;Homme;cursus L;apprentis;Droit, Economie, Gestion;Bac étranger;6.0;
+2020/2021;Homme;cursus L;apprentis;Droit, Economie, Gestion;Equivalence;2.0;
+2020/2021;Homme;cursus L;apprentis;Sciences Humaines et Sociales;Bac pro;2.0;
+2020/2021;Homme;cursus L;apprentis;Sciences, Technologies, Santé;Bac techno;74.0;6.0
+2020/2021;Homme;cursus L;continue;Arts, Lettres et Langues;Bac techno;1.0;
+2020/2021;Homme;cursus L;continue;Droit, Economie, Gestion;Bac général;8.0;
+2020/2021;Homme;cursus L;continue;Droit, Economie, Gestion;Equivalence;2.0;
+2020/2021;Homme;cursus L;continue;Sciences Humaines et Sociales;Bac général;14.0;1.0
+2020/2021;Homme;cursus L;continue;Sciences, Technologies, Santé;Bac général;24.0;
+2020/2021;Homme;cursus L;continue;Sciences, Technologies, Santé;Bac pro;7.0;
+2020/2021;Homme;cursus M;initiale;Droit, Economie, Gestion;Bac pro;1.0;
+2020/2021;Homme;cursus M;initiale;Sciences Humaines et Sociales;Bac techno;22.0;
+2020/2021;Homme;cursus M;initiale;Sciences Humaines et Sociales;Bac étranger;32.0;
+2020/2021;Homme;cursus M;initiale;Sciences, Technologies, Santé;Bac général;266.0;
+2020/2021;Homme;cursus M;initiale;Sciences, Technologies, Santé;Bac techno;62.0;
+2020/2021;Homme;cursus M;initiale;Hors domaine;Bac général;13.0;
+2020/2021;Homme;cursus M;apprentis;Droit, Economie, Gestion;Bac techno;23.0;
+2020/2021;Homme;cursus M;apprentis;Droit, Economie, Gestion;Bac étranger;12.0;
+2020/2021;Homme;cursus M;apprentis;Sciences Humaines et Sociales;Bac général;2.0;
+2020/2021;Homme;cursus M;apprentis;Sciences Humaines et Sociales;Bac pro;2.0;
+2020/2021;Homme;cursus M;apprentis;Sciences, Technologies, Santé;Bac techno;32.0;
+2020/2021;Homme;cursus M;apprentis;Sciences, Technologies, Santé;Bac étranger;27.0;
+2020/2021;Homme;cursus M;continue;Droit, Economie, Gestion;Bac techno;2.0;
+2020/2021;Homme;cursus D;initiale;Domaine inconnu;Bac général;40.0;
+2020/2021;Homme;cursus D;initiale;Domaine inconnu;Equivalence;19.0;
+2021/2022;Femme;cursus L;initiale;Arts, Lettres et Langues;Bac pro;134.0;33.0
+2021/2022;Femme;cursus L;initiale;Arts, Lettres et Langues;Bac étranger;297.0;53.0
+2021/2022;Femme;cursus L;initiale;Arts, Lettres et Langues;Sans bac;1.0;1.0
+2021/2022;Femme;cursus L;initiale;Sciences, Technologies, Santé;Bac général;208.0;66.0
+2021/2022;Femme;cursus L;initiale;Sciences, Technologies, Santé;Bac étranger;8.0;1.0
+2021/2022;Femme;cursus L;initiale;Hors domaine;Bac étranger;3.0;
+2021/2022;Femme;cursus L;initiale;;Bac général;83.0;10.0
+2021/2022;Femme;cursus L;initiale;;Bac techno;44.0;16.0
+2021/2022;Femme;cursus L;apprentis;Arts, Lettres et Langues;Bac techno;16.0;
+2021/2022;Femme;cursus L;apprentis;;Bac techno;142.0;
+2021/2022;Femme;cursus L;continue;Arts, Lettres et Langues;Bac étranger;1.0;
+2021/2022;Femme;cursus L;continue;;Bac général;11.0;
+2021/2022;Femme;cursus L;continue;;Bac techno;7.0;
+2021/2022;Femme;cursus L;continue;;Bac pro;10.0;
+2021/2022;Femme;cursus M;initiale;Sciences Humaines et Sociales;Bac étranger;21.0;
+2021/2022;Femme;cursus M;initiale;Sciences Humaines et Sociales;Equivalence;2.0;
+2021/2022;Femme;cursus M;initiale;Multi-domaine;Bac général;614.0;
+2021/2022;Femme;cursus M;initiale;Multi-domaine;Bac étranger;226.0;
+2021/2022;Femme;cursus M;initiale;;Bac général;22.0;
+2021/2022;Femme;cursus M;initiale;;Bac techno;5.0;
+2021/2022;Femme;cursus M;apprentis;Multi-domaine;Bac techno;44.0;
+2021/2022;Femme;cursus M;continue;Sciences, Technologies, Santé;Bac général;11.0;
+2021/2022;Femme;cursus M;continue;Multi-domaine;Bac étranger;3.0;
+2021/2022;Femme;cursus D;initiale;Sciences Humaines et Sociales;Bac étranger;2.0;
+2021/2022;Homme;cursus L;initiale;Arts, Lettres et Langues;Bac techno;340.0;81.0
+2021/2022;Homme;cursus L;initiale;Arts, Lettres et Langues;;3.0;3.0
+2021/2022;Homme;cursus L;initiale;Sciences Humaines et Sociales;Bac techno;2.0;
+2021/2022;Homme;cursus L;initiale;Sciences, Technologies, Santé;Bac pro;8.0;6.0
+2021/2022;Homme;cursus L;initiale;Sciences, Technologies, Santé;Bac étranger;18.0;3.0
+2021/2022;Homme;cursus L;initiale;;Bac techno;51.0;24.0
+2021/2022;Homme;cursus L;initiale;;Bac pro;40.0;25.0
+2021/2022;Homme;cursus L;initiale;;Equivalence;2.0;
+2021/2022;Homme;cursus L;apprentis;Arts, Lettres et Langues;Bac général;49.0;
+2021/2022;Homme;cursus L;apprentis;Sciences, Technologies, Santé;Bac général;121.0;23.0
+2021/2022;Homme;cursus L;apprentis;Sciences, Technologies, Santé;Bac techno;57.0;16.0
+2021/2022;Homme;cursus L;apprentis;;Bac techno;133.0;
+2021/2022;Homme;cursus L;apprentis;;Equivalence;3.0;
+2021/2022;Homme;cursus L;continue;Sciences, Technologies, Santé;Bac pro;4.0;
+2021/2022;Homme;cursus M;initiale;Sciences Humaines et Sociales;Bac général;42.0;
+2021/2022;Homme;cursus M;initiale;Multi-domaine;Bac étranger;373.0;
+2021/2022;Homme;cursus M;apprentis;Multi-domaine;Bac techno;51.0;
+2021/2022;Homme;cursus M;apprentis;Multi-domaine;Equivalence;1.0;
+2021/2022;Homme;cursus M;continue;Sciences Humaines et Sociales;Bac général;1.0;
+2021/2022;Homme;cursus M;continue;Multi-domaine;Bac général;13.0;
+2021/2022;Homme;cursus M;continue;Multi-domaine;Bac pro;1.0;
+2021/2022;Homme;cursus M;continue;;Bac général;38.0;
+2021/2022;Homme;cursus D;initiale;Domaine inconnu;Bac général;34.0;
+2021/2022;Homme;cursus D;initiale;Domaine inconnu;Equivalence;40.0;
+2022/2023;Femme;cursus L;initiale;Arts, Lettres et Langues;Bac général;1822.0;573.0
+2022/2023;Femme;cursus L;initiale;Arts, Lettres et Langues;Equivalence;6.0;
+2022/2023;Femme;cursus L;initiale;Arts, Lettres et Langues;;2.0;2.0
+2022/2023;Femme;cursus L;initiale;Sciences, Technologies, Santé;Bac techno;150.0;84.0
+2022/2023;Femme;cursus L;initiale;;Equivalence;1.0;
+2022/2023;Femme;cursus L;apprentis;Arts, Lettres et Langues;Bac pro;3.0;
+2022/2023;Femme;cursus L;apprentis;Arts, Lettres et Langues;Bac étranger;8.0;
+2022/2023;Femme;cursus L;apprentis;;Bac pro;37.0;
+2022/2023;Femme;cursus L;apprentis;;Sans bac;1.0;
+2022/2023;Femme;cursus L;continue;Arts, Lettres et Langues;Bac techno;4.0;
+2022/2023;Femme;cursus L;continue;;Bac étranger;5.0;
+2022/2023;Femme;cursus M;initiale;Sciences Humaines et Sociales;Bac général;51.0;
+2022/2023;Femme;cursus M;initiale;Sciences Humaines et Sociales;Bac étranger;11.0;
+2022/2023;Femme;cursus M;initiale;Multi-domaine;Bac général;573.0;
+2022/2023;Femme;cursus M;initiale;Multi-domaine;Bac étranger;211.0;
+2022/2023;Femme;cursus M;apprentis;Multi-domaine;Bac pro;9.0;
+2022/2023;Femme;cursus M;continue;Multi-domaine;Bac techno;4.0;
+2022/2023;Femme;cursus M;continue;Multi-domaine;Bac étranger;5.0;
+2022/2023;Femme;cursus M;continue;Multi-domaine;Equivalence;1.0;
+2022/2023;Homme;cursus L;initiale;Arts, Lettres et Langues;Equivalence;10.0;
+2022/2023;Homme;cursus L;initiale;Sciences, Technologies, Santé;Bac étranger;21.0;2.0
+2022/2023;Homme;cursus L;initiale;;Bac général;52.0;16.0
+2022/2023;Homme;cursus L;initiale;;Bac techno;36.0;16.0
+2022/2023;Homme;cursus L;apprentis;Sciences, Technologies, Santé;Bac pro;6.0;
+2022/2023;Homme;cursus L;apprentis;Sciences, Technologies, Santé;Bac étranger;4.0;
+2022/2023;Homme;cursus L;apprentis;;Bac général;95.0;
+2022/2023;Homme;cursus L;apprentis;;Bac techno;142.0;
+2022/2023;Homme;cursus L;continue;Arts, Lettres et Langues;Bac général;9.0;
+2022/2023;Homme;cursus L;continue;Arts, Lettres et Langues;Bac techno;5.0;
+2022/2023;Homme;cursus L;continue;Arts, Lettres et Langues;Bac étranger;2.0;
+2022/2023;Homme;cursus L;continue;Sciences, Technologies, Santé;Bac pro;1.0;
+2022/2023;Homme;cursus M;initiale;Sciences Humaines et Sociales;Bac général;25.0;
+2022/2023;Homme;cursus M;initiale;Sciences Humaines et Sociales;Bac étranger;11.0;
+2022/2023;Homme;cursus M;initiale;Multi-domaine;Bac pro;11.0;
+2022/2023;Homme;cursus M;apprentis;Multi-domaine;Bac pro;1.0;
+2022/2023;Homme;cursus M;continue;;Bac général;35.0;
+2022/2023;Homme;cursus M;continue;;Bac étranger;3.0;
+2022/2023;Homme;cursus D;initiale;Domaine inconnu;Bac étranger;26.0;
+2022/2023;Homme;cursus D;initiale;Domaine inconnu;Equivalence;44.0;
+2020/2021;Femme;cursus L;initiale;Arts, Lettres et Langues;Bac pro;24.0;4.0
+2020/2021;Femme;cursus L;initiale;Droit, Economie, Gestion;Bac étranger;113.0;8.0
+2020/2021;Femme;cursus L;initiale;Sciences Humaines et Sociales;Bac général;231.0;67.0
+2020/2021;Femme;cursus L;initiale;Sciences Humaines et Sociales;Bac techno;118.0;43.0
+2020/2021;Femme;cursus L;initiale;Sciences, Technologies, Santé;Bac général;714.0;214.0
+2020/2021;Femme;cursus L;initiale;Sciences, Technologies, Santé;Bac techno;88.0;30.0
+2020/2021;Femme;cursus L;initiale;Sciences, Technologies, Santé;Bac pro;12.0;5.0
+2020/2021;Femme;cursus L;initiale;Sciences, Technologies, Santé;Equivalence;1.0;
+2020/2021;Femme;cursus L;apprentis;Droit, Economie, Gestion;Bac pro;45.0;
+2020/2021;Femme;cursus L;apprentis;Droit, Economie, Gestion;Bac étranger;9.0;
+2020/2021;Femme;cursus L;apprentis;Sciences Humaines et Sociales;Bac général;9.0;
+2020/2021;Femme;cursus L;apprentis;Sciences, Technologies, Santé;Bac général;19.0;
+2020/2021;Femme;cursus L;apprentis;Sciences, Technologies, Santé;Bac pro;6.0;
+2020/2021;Femme;cursus L;apprentis;Sciences, Technologies, Santé;Bac étranger;3.0;
+2020/2021;Femme;cursus L;continue;Droit, Economie, Gestion;Bac techno;10.0;
+2020/2021;Femme;cursus L;continue;Droit, Economie, Gestion;Equivalence;2.0;
+2020/2021;Femme;cursus L;continue;Sciences, Technologies, Santé;Bac général;5.0;
+2020/2021;Femme;cursus M;initiale;Droit, Economie, Gestion;Bac pro;4.0;
+2020/2021;Femme;cursus M;initiale;Droit, Economie, Gestion;Bac étranger;63.0;
+2020/2021;Femme;cursus M;initiale;Droit, Economie, Gestion;Equivalence;6.0;
+2020/2021;Femme;cursus M;initiale;Sciences Humaines et Sociales;Bac techno;50.0;
+2020/2021;Femme;cursus M;initiale;Sciences Humaines et Sociales;Bac pro;3.0;
+2020/2021;Femme;cursus M;initiale;Sciences Humaines et Sociales;Bac étranger;33.0;
+2020/2021;Femme;cursus M;initiale;Sciences Humaines et Sociales;Equivalence;5.0;
+2020/2021;Femme;cursus M;initiale;Sciences, Technologies, Santé;Bac général;110.0;
+2020/2021;Femme;cursus M;initiale;Sciences, Technologies, Santé;Bac techno;18.0;
+2020/2021;Femme;cursus M;initiale;Sciences, Technologies, Santé;Bac étranger;163.0;
+2020/2021;Femme;cursus M;initiale;Multi-domaine;Bac étranger;1.0;
+2020/2021;Femme;cursus M;initiale;Multi-domaine;Equivalence;2.0;
+2020/2021;Femme;cursus M;apprentis;Droit, Economie, Gestion;Bac général;111.0;
+2020/2021;Femme;cursus M;apprentis;Droit, Economie, Gestion;Bac étranger;12.0;
+2020/2021;Femme;cursus M;apprentis;Sciences Humaines et Sociales;Equivalence;1.0;
+2020/2021;Femme;cursus L;initiale;Sciences Humaines et Sociales;Equivalence;3.0;
+2020/2021;Femme;cursus M;apprentis;Sciences, Technologies, Santé;Bac techno;7.0;
+2020/2021;Femme;cursus L;initiale;Sciences, Technologies, Santé;Bac étranger;135.0;11.0
+2020/2021;Femme;cursus M;apprentis;Sciences, Technologies, Santé;Bac étranger;15.0;
+2020/2021;Femme;cursus L;initiale;Multi-domaine;Bac étranger;2.0;
+2020/2021;Femme;cursus M;continue;Droit, Economie, Gestion;Bac général;2.0;
+2020/2021;Femme;cursus L;apprentis;Droit, Economie, Gestion;Bac techno;130.0;7.0
+2020/2021;Femme;cursus M;continue;Droit, Economie, Gestion;Bac étranger;2.0;
+2020/2021;Femme;cursus L;apprentis;Sciences Humaines et Sociales;Bac pro;7.0;
+2020/2021;Femme;cursus M;continue;Sciences Humaines et Sociales;Bac général;8.0;
+2020/2021;Femme;cursus L;apprentis;Sciences Humaines et Sociales;Bac étranger;1.0;
+2020/2021;Femme;cursus M;continue;Sciences Humaines et Sociales;Equivalence;2.0;
+2020/2021;Femme;cursus L;apprentis;Sciences, Technologies, Santé;Bac techno;11.0;
+2020/2021;Femme;cursus M;continue;Sciences, Technologies, Santé;Bac général;24.0;
+2020/2021;Femme;cursus L;continue;Arts, Lettres et Langues;Bac général;3.0;
+2020/2021;Femme;cursus M;continue;Sciences, Technologies, Santé;Bac étranger;9.0;
+2020/2021;Femme;cursus L;continue;Droit, Economie, Gestion;Bac général;15.0;
+2020/2021;Femme;cursus D;initiale;Domaine inconnu;Bac étranger;25.0;
+2020/2021;Femme;cursus L;continue;Droit, Economie, Gestion;Bac pro;3.0;
+2020/2021;Femme;cursus D;initiale;Hors domaine;Bac général;5.0;
+2020/2021;Femme;cursus L;continue;Droit, Economie, Gestion;Bac étranger;4.0;
+2020/2021;Homme;cursus L;initiale;Arts, Lettres et Langues;Bac général;190.0;47.0
+2020/2021;Femme;cursus L;continue;Sciences Humaines et Sociales;Bac général;4.0;1.0
+2020/2021;Homme;cursus L;initiale;Arts, Lettres et Langues;Bac pro;20.0;4.0
+2020/2021;Femme;cursus L;continue;Sciences Humaines et Sociales;Bac techno;1.0;
+2020/2021;Homme;cursus L;initiale;Arts, Lettres et Langues;Equivalence;2.0;1.0
+2020/2021;Femme;cursus L;continue;Sciences Humaines et Sociales;Equivalence;1.0;
+2020/2021;Homme;cursus L;initiale;Droit, Economie, Gestion;Equivalence;5.0;
+2020/2021;Femme;cursus L;continue;Sciences, Technologies, Santé;Bac techno;2.0;
+2020/2021;Homme;cursus L;initiale;Sciences Humaines et Sociales;Bac général;169.0;45.0
+2020/2021;Femme;cursus L;continue;Hors domaine;Sans bac;40.0;2.0
+2020/2021;Homme;cursus L;initiale;Sciences Humaines et Sociales;Bac techno;66.0;24.0
+2020/2021;Femme;cursus M;initiale;Arts, Lettres et Langues;Bac général;28.0;
+2020/2021;Homme;cursus L;initiale;Sciences Humaines et Sociales;Bac pro;40.0;19.0
+2020/2021;Femme;cursus M;initiale;Arts, Lettres et Langues;Bac pro;1.0;
+2020/2021;Homme;cursus L;initiale;Sciences Humaines et Sociales;Bac étranger;27.0;
+2020/2021;Femme;cursus M;initiale;Arts, Lettres et Langues;Bac étranger;6.0;
+2020/2021;Homme;cursus L;initiale;Sciences Humaines et Sociales;Equivalence;2.0;
+2020/2021;Femme;cursus M;initiale;Arts, Lettres et Langues;Equivalence;1.0;
+2020/2021;Homme;cursus L;initiale;Sciences, Technologies, Santé;Bac étranger;195.0;13.0
+2020/2021;Femme;cursus M;initiale;Droit, Economie, Gestion;Bac général;266.0;
+2020/2021;Homme;cursus L;initiale;Multi-domaine;Bac général;35.0;18.0
+2020/2021;Femme;cursus M;initiale;Droit, Economie, Gestion;Bac techno;26.0;
+2020/2021;Homme;cursus L;initiale;Multi-domaine;Bac étranger;3.0;
+2020/2021;Femme;cursus M;initiale;Sciences Humaines et Sociales;Bac général;277.0;
+2020/2021;Homme;cursus L;initiale;Hors domaine;Bac techno;21.0;19.0
+2020/2021;Femme;cursus M;initiale;Sciences, Technologies, Santé;Equivalence;2.0;
+2020/2021;Homme;cursus L;initiale;Hors domaine;Equivalence;1.0;
+2020/2021;Femme;cursus M;initiale;Multi-domaine;Bac général;33.0;
+2020/2021;Homme;cursus L;apprentis;Droit, Economie, Gestion;Bac général;157.0;23.0
+2020/2021;Femme;cursus M;initiale;Multi-domaine;Bac techno;2.0;
+2020/2021;Homme;cursus L;apprentis;Droit, Economie, Gestion;Bac techno;107.0;15.0
+2020/2021;Femme;cursus M;initiale;Hors domaine;Bac général;55.0;
+2020/2021;Homme;cursus L;apprentis;Sciences, Technologies, Santé;Bac général;106.0;9.0
+2020/2021;Femme;cursus M;initiale;Hors domaine;Bac pro;1.0;
+2020/2021;Homme;cursus L;apprentis;Sciences, Technologies, Santé;Bac pro;30.0;2.0
+2020/2021;Femme;cursus M;apprentis;Arts, Lettres et Langues;Bac étranger;2.0;
+2020/2021;Homme;cursus L;continue;Droit, Economie, Gestion;Bac pro;5.0;
+2020/2021;Femme;cursus M;apprentis;Droit, Economie, Gestion;Bac techno;37.0;
+2020/2021;Homme;cursus L;continue;Sciences Humaines et Sociales;Bac techno;6.0;
+2020/2021;Femme;cursus M;apprentis;Sciences Humaines et Sociales;Bac général;5.0;
+2020/2021;Homme;cursus L;continue;Sciences Humaines et Sociales;Bac pro;2.0;
+2020/2021;Femme;cursus M;apprentis;Sciences, Technologies, Santé;Bac général;40.0;
+2020/2021;Homme;cursus L;continue;Sciences Humaines et Sociales;Equivalence;1.0;
+2020/2021;Femme;cursus M;continue;Droit, Economie, Gestion;Bac techno;1.0;
+2020/2021;Homme;cursus L;continue;Sciences, Technologies, Santé;Bac étranger;3.0;
+2020/2021;Femme;cursus M;continue;Sciences Humaines et Sociales;Bac techno;1.0;
+2020/2021;Homme;cursus L;continue;Hors domaine;Equivalence;3.0;
+2020/2021;Femme;cursus D;initiale;Domaine inconnu;Bac techno;2.0;
+2020/2021;Homme;cursus L;continue;Hors domaine;Sans bac;14.0;
+2020/2021;Femme;cursus D;initiale;Domaine inconnu;Equivalence;28.0;
+2020/2021;Homme;cursus M;initiale;Arts, Lettres et Langues;Bac étranger;5.0;
+2020/2021;Femme;cursus D;initiale;Hors domaine;Bac étranger;4.0;
+2020/2021;Homme;cursus M;initiale;Droit, Economie, Gestion;Bac techno;10.0;
+2020/2021;Homme;cursus L;initiale;Droit, Economie, Gestion;Bac général;747.0;250.0
+2020/2021;Homme;cursus M;initiale;Droit, Economie, Gestion;Equivalence;2.0;
+2020/2021;Homme;cursus L;initiale;Droit, Economie, Gestion;Bac techno;199.0;71.0
+2020/2021;Homme;cursus M;initiale;Sciences, Technologies, Santé;Bac étranger;356.0;
+2020/2021;Homme;cursus L;initiale;Droit, Economie, Gestion;Bac pro;43.0;7.0
+2020/2021;Homme;cursus M;initiale;Multi-domaine;Bac techno;1.0;
+2020/2021;Homme;cursus L;initiale;Droit, Economie, Gestion;Bac étranger;122.0;2.0
+2020/2021;Homme;cursus M;initiale;Hors domaine;Bac techno;2.0;
+2020/2021;Homme;cursus L;initiale;Sciences, Technologies, Santé;Bac techno;366.0;117.0
+2020/2021;Homme;cursus M;initiale;Hors domaine;Equivalence;3.0;
+2020/2021;Homme;cursus L;initiale;Sciences, Technologies, Santé;Bac pro;50.0;14.0
+2020/2021;Homme;cursus M;apprentis;Droit, Economie, Gestion;Bac général;86.0;
+2020/2021;Homme;cursus L;initiale;Sciences, Technologies, Santé;Equivalence;6.0;
+2020/2021;Homme;cursus M;apprentis;Sciences, Technologies, Santé;Bac pro;5.0;
+2020/2021;Homme;cursus L;initiale;Multi-domaine;Bac techno;1.0;
+2020/2021;Homme;cursus M;continue;Arts, Lettres et Langues;Bac étranger;1.0;
+2020/2021;Homme;cursus L;initiale;Hors domaine;Bac général;42.0;16.0
+2020/2021;Homme;cursus M;continue;Droit, Economie, Gestion;Bac étranger;1.0;
+2020/2021;Homme;cursus L;apprentis;Sciences Humaines et Sociales;Bac général;5.0;
+2020/2021;Homme;cursus M;continue;Sciences Humaines et Sociales;Bac techno;2.0;
+2020/2021;Homme;cursus L;apprentis;Sciences Humaines et Sociales;Bac techno;1.0;
+2020/2021;Homme;cursus M;continue;Sciences, Technologies, Santé;Bac techno;1.0;
+2020/2021;Homme;cursus L;apprentis;Sciences, Technologies, Santé;Bac étranger;15.0;
+2020/2021;Homme;cursus D;initiale;Domaine inconnu;Bac pro;1.0;
+2020/2021;Homme;cursus L;continue;Droit, Economie, Gestion;Bac techno;3.0;
+2020/2021;Homme;cursus D;initiale;Hors domaine;Bac général;6.0;
+2020/2021;Homme;cursus L;continue;Droit, Economie, Gestion;Bac étranger;6.0;
+2020/2021;Homme;cursus D;initiale;Hors domaine;Bac étranger;3.0;
+2020/2021;Homme;cursus L;continue;Sciences, Technologies, Santé;Bac techno;12.0;
+2021/2022;Femme;cursus L;initiale;Arts, Lettres et Langues;Bac techno;371.0;124.0
+2020/2021;Homme;cursus L;continue;Sciences, Technologies, Santé;Equivalence;1.0;
+2021/2022;Femme;cursus L;initiale;Arts, Lettres et Langues;Equivalence;8.0;1.0
+2020/2021;Homme;cursus M;initiale;Arts, Lettres et Langues;Bac général;17.0;
+2021/2022;Femme;cursus L;initiale;Sciences Humaines et Sociales;Bac pro;1.0;
+2020/2021;Homme;cursus M;initiale;Arts, Lettres et Langues;Bac techno;6.0;
+2021/2022;Femme;cursus L;initiale;Sciences, Technologies, Santé;Bac techno;122.0;73.0
+2020/2021;Homme;cursus M;initiale;Droit, Economie, Gestion;Bac général;111.0;
+2021/2022;Femme;cursus L;initiale;;Bac pro;27.0;14.0
+2020/2021;Homme;cursus M;initiale;Droit, Economie, Gestion;Bac étranger;64.0;
+2021/2022;Femme;cursus L;initiale;;Equivalence;6.0;
+2020/2021;Homme;cursus M;initiale;Sciences Humaines et Sociales;Bac général;102.0;
+2021/2022;Femme;cursus L;apprentis;Arts, Lettres et Langues;Bac général;76.0;
+2020/2021;Homme;cursus M;initiale;Sciences Humaines et Sociales;Bac pro;1.0;
+2021/2022;Femme;cursus L;apprentis;Arts, Lettres et Langues;Bac pro;4.0;
+2020/2021;Homme;cursus M;initiale;Sciences Humaines et Sociales;Equivalence;1.0;
+2021/2022;Femme;cursus L;apprentis;Arts, Lettres et Langues;Bac étranger;7.0;
+2020/2021;Homme;cursus M;initiale;Sciences, Technologies, Santé;Bac pro;11.0;
+2021/2022;Femme;cursus L;apprentis;Sciences, Technologies, Santé;Bac général;124.0;24.0
+2020/2021;Homme;cursus M;initiale;Sciences, Technologies, Santé;Equivalence;2.0;
+2021/2022;Femme;cursus L;apprentis;;Bac étranger;7.0;
+2020/2021;Homme;cursus M;initiale;Multi-domaine;Bac général;6.0;
+2021/2022;Femme;cursus L;continue;Arts, Lettres et Langues;Bac général;6.0;
+2020/2021;Homme;cursus M;apprentis;Arts, Lettres et Langues;Bac général;5.0;
+2021/2022;Femme;cursus L;continue;Arts, Lettres et Langues;Bac pro;1.0;
+2020/2021;Homme;cursus M;apprentis;Droit, Economie, Gestion;Bac pro;3.0;
+2021/2022;Femme;cursus L;continue;;Equivalence;15.0;1.0
+2020/2021;Homme;cursus M;apprentis;Sciences Humaines et Sociales;Bac étranger;2.0;
+2021/2022;Femme;cursus M;initiale;Sciences Humaines et Sociales;Bac pro;1.0;
+2020/2021;Homme;cursus M;apprentis;Sciences, Technologies, Santé;Bac général;81.0;
+2021/2022;Femme;cursus M;initiale;Multi-domaine;Bac techno;78.0;
+2020/2021;Homme;cursus M;apprentis;Sciences, Technologies, Santé;Equivalence;1.0;
+2021/2022;Femme;cursus M;initiale;Multi-domaine;Equivalence;8.0;
+2020/2021;Homme;cursus M;continue;Droit, Economie, Gestion;Bac général;2.0;
+2021/2022;Femme;cursus M;apprentis;Multi-domaine;Bac pro;3.0;
+2020/2021;Homme;cursus M;continue;Sciences, Technologies, Santé;Bac général;49.0;
+2021/2022;Femme;cursus M;continue;Sciences, Technologies, Santé;Bac étranger;3.0;
+2020/2021;Homme;cursus M;continue;Sciences, Technologies, Santé;Bac étranger;4.0;
+2021/2022;Femme;cursus M;continue;Multi-domaine;Bac général;15.0;
+2020/2021;Homme;cursus D;initiale;Domaine inconnu;Bac techno;4.0;
+2021/2022;Femme;cursus M;continue;Multi-domaine;Bac techno;6.0;
+2020/2021;Homme;cursus D;initiale;Domaine inconnu;Bac étranger;51.0;
+2021/2022;Femme;cursus M;continue;Multi-domaine;Bac pro;1.0;
+2021/2022;Femme;cursus L;initiale;Arts, Lettres et Langues;Bac général;1917.0;541.0
+2021/2022;Femme;cursus M;continue;;Bac général;30.0;
+2021/2022;Femme;cursus L;initiale;Sciences Humaines et Sociales;Bac général;2.0;
+2021/2022;Femme;cursus D;initiale;Domaine inconnu;Bac général;37.0;
+2021/2022;Femme;cursus L;initiale;Sciences, Technologies, Santé;Bac pro;5.0;3.0
+2021/2022;Femme;cursus D;initiale;Domaine inconnu;Equivalence;59.0;
+2021/2022;Femme;cursus L;initiale;Multi-domaine;Bac général;25.0;10.0
+2021/2022;Femme;cursus D;initiale;Sciences Humaines et Sociales;Bac général;4.0;
+2021/2022;Femme;cursus L;initiale;Multi-domaine;Bac étranger;2.0;1.0
+2021/2022;Homme;cursus L;initiale;Arts, Lettres et Langues;Bac général;2014.0;585.0
+2021/2022;Femme;cursus L;initiale;;Bac étranger;20.0;
+2021/2022;Homme;cursus L;initiale;Arts, Lettres et Langues;Bac étranger;315.0;44.0
+2021/2022;Femme;cursus L;apprentis;Sciences, Technologies, Santé;Bac techno;29.0;10.0
+2021/2022;Homme;cursus L;initiale;Sciences Humaines et Sociales;Bac général;6.0;
+2021/2022;Femme;cursus L;apprentis;Sciences, Technologies, Santé;Bac pro;3.0;2.0
+2021/2022;Homme;cursus L;initiale;Sciences, Technologies, Santé;Bac général;318.0;129.0
+2021/2022;Femme;cursus L;apprentis;Sciences, Technologies, Santé;Bac étranger;1.0;
+2021/2022;Homme;cursus L;initiale;Sciences, Technologies, Santé;Bac techno;205.0;102.0
+2021/2022;Femme;cursus L;apprentis;;Bac général;163.0;
+2021/2022;Homme;cursus L;initiale;Multi-domaine;Bac général;47.0;17.0
+2021/2022;Femme;cursus L;apprentis;;Bac pro;59.0;
+2021/2022;Homme;cursus L;initiale;Multi-domaine;Bac techno;1.0;
+2021/2022;Femme;cursus L;apprentis;;Equivalence;3.0;
+2021/2022;Homme;cursus L;initiale;Multi-domaine;Bac étranger;3.0;
+2021/2022;Femme;cursus L;apprentis;;;2.0;
+2021/2022;Homme;cursus L;initiale;;Bac étranger;24.0;
+2021/2022;Femme;cursus L;continue;Arts, Lettres et Langues;Bac techno;4.0;
+2021/2022;Homme;cursus L;apprentis;Arts, Lettres et Langues;Bac techno;29.0;
+2021/2022;Femme;cursus L;continue;Sciences, Technologies, Santé;Bac pro;2.0;
+2021/2022;Homme;cursus L;apprentis;Arts, Lettres et Langues;Bac étranger;5.0;
+2021/2022;Femme;cursus L;continue;Sciences, Technologies, Santé;Bac étranger;2.0;
+2021/2022;Homme;cursus L;apprentis;Sciences, Technologies, Santé;Bac pro;9.0;2.0
+2021/2022;Femme;cursus L;continue;;Bac étranger;9.0;
+2021/2022;Homme;cursus L;apprentis;;Bac pro;45.0;
+2021/2022;Femme;cursus L;continue;;Sans bac;26.0;
+2021/2022;Homme;cursus L;apprentis;;Bac étranger;6.0;
+2021/2022;Femme;cursus M;initiale;Sciences Humaines et Sociales;Bac général;65.0;
+2021/2022;Homme;cursus L;continue;Arts, Lettres et Langues;Bac général;9.0;
+2021/2022;Femme;cursus M;initiale;Sciences Humaines et Sociales;Bac techno;8.0;
+2021/2022;Homme;cursus L;continue;Arts, Lettres et Langues;Bac pro;1.0;
+2021/2022;Femme;cursus M;initiale;Multi-domaine;Bac pro;15.0;
+2021/2022;Homme;cursus L;continue;Arts, Lettres et Langues;Equivalence;1.0;
+2021/2022;Femme;cursus M;initiale;Multi-domaine;;1.0;
+2021/2022;Homme;cursus L;continue;Sciences, Technologies, Santé;Bac techno;3.0;
+2021/2022;Femme;cursus M;apprentis;Multi-domaine;Bac général;204.0;
+2021/2022;Homme;cursus L;continue;;Bac général;37.0;1.0
+2021/2022;Femme;cursus M;apprentis;Multi-domaine;Bac étranger;42.0;
+2021/2022;Homme;cursus L;continue;;Bac techno;21.0;
+2021/2022;Femme;cursus M;continue;;Bac étranger;1.0;
+2021/2022;Homme;cursus L;continue;;Bac pro;12.0;
+2021/2022;Femme;cursus D;initiale;Domaine inconnu;Bac étranger;15.0;
+2021/2022;Homme;cursus L;continue;;Bac étranger;10.0;
+2021/2022;Homme;cursus L;initiale;Arts, Lettres et Langues;Bac pro;113.0;39.0
+2021/2022;Homme;cursus L;continue;;Sans bac;9.0;
+2021/2022;Homme;cursus L;initiale;Arts, Lettres et Langues;Equivalence;9.0;
+2021/2022;Homme;cursus M;initiale;Sciences Humaines et Sociales;Bac techno;6.0;
+2021/2022;Homme;cursus L;initiale;;Bac général;84.0;26.0
+2021/2022;Homme;cursus M;initiale;Sciences Humaines et Sociales;Bac étranger;21.0;
+2021/2022;Homme;cursus L;apprentis;Arts, Lettres et Langues;Bac pro;2.0;
+2021/2022;Homme;cursus M;initiale;Sciences Humaines et Sociales;Equivalence;2.0;
+2021/2022;Homme;cursus L;apprentis;Sciences, Technologies, Santé;Bac étranger;2.0;
+2021/2022;Homme;cursus M;initiale;Multi-domaine;Bac techno;69.0;
+2021/2022;Homme;cursus L;apprentis;;Bac général;141.0;
+2021/2022;Homme;cursus M;initiale;Multi-domaine;Bac pro;14.0;
+2021/2022;Homme;cursus L;continue;Arts, Lettres et Langues;Bac techno;5.0;
+2021/2022;Homme;cursus M;initiale;Multi-domaine;Equivalence;2.0;
+2021/2022;Homme;cursus L;continue;Sciences, Technologies, Santé;Bac étranger;5.0;
+2021/2022;Homme;cursus M;initiale;;Bac techno;1.0;
+2021/2022;Homme;cursus L;continue;Sciences, Technologies, Santé;Equivalence;4.0;1.0
+2021/2022;Homme;cursus M;apprentis;Multi-domaine;Bac général;163.0;
+2021/2022;Homme;cursus L;continue;;Equivalence;24.0;1.0
+2021/2022;Homme;cursus M;continue;Sciences, Technologies, Santé;Bac général;8.0;
+2021/2022;Homme;cursus M;initiale;Sciences Humaines et Sociales;Bac pro;1.0;
+2021/2022;Homme;cursus M;continue;;Bac étranger;3.0;
+2021/2022;Homme;cursus M;initiale;Multi-domaine;Bac général;470.0;
+2021/2022;Homme;cursus D;initiale;Domaine inconnu;Bac étranger;44.0;
+2021/2022;Homme;cursus M;initiale;;Bac général;14.0;
+2021/2022;Homme;cursus D;initiale;Sciences Humaines et Sociales;Bac général;2.0;
+2021/2022;Homme;cursus M;apprentis;Multi-domaine;Bac pro;7.0;
+2022/2023;Femme;cursus L;initiale;Arts, Lettres et Langues;Bac techno;304.0;120.0
+2021/2022;Homme;cursus M;apprentis;Multi-domaine;Bac étranger;62.0;
+2022/2023;Femme;cursus L;initiale;Arts, Lettres et Langues;Bac pro;99.0;29.0
+2021/2022;Homme;cursus M;continue;Sciences, Technologies, Santé;Bac techno;1.0;
+2022/2023;Femme;cursus L;initiale;Arts, Lettres et Langues;Bac étranger;329.0;53.0
+2021/2022;Homme;cursus M;continue;Multi-domaine;Bac techno;1.0;
+2022/2023;Femme;cursus L;initiale;Sciences, Technologies, Santé;Bac général;152.0;73.0
+2021/2022;Homme;cursus M;continue;Multi-domaine;Bac étranger;3.0;
+2022/2023;Femme;cursus L;initiale;Sciences, Technologies, Santé;Bac pro;6.0;4.0
+2021/2022;Homme;cursus M;continue;Multi-domaine;Equivalence;1.0;
+2022/2023;Femme;cursus L;initiale;Multi-domaine;Bac général;37.0;11.0
+2021/2022;Homme;cursus D;initiale;Domaine inconnu;Bac techno;1.0;
+2022/2023;Femme;cursus L;initiale;;Bac pro;15.0;10.0
+2021/2022;Homme;cursus D;initiale;Droit, Economie, Gestion;Bac général;1.0;
+2022/2023;Femme;cursus L;apprentis;Arts, Lettres et Langues;Bac techno;10.0;
+2022/2023;Femme;cursus L;initiale;Sciences, Technologies, Santé;Bac étranger;11.0;4.0
+2022/2023;Femme;cursus L;apprentis;Sciences, Technologies, Santé;Bac général;98.0;19.0
+2022/2023;Femme;cursus L;initiale;Multi-domaine;Bac étranger;2.0;
+2022/2023;Femme;cursus L;apprentis;Sciences, Technologies, Santé;Equivalence;1.0;1.0
+2022/2023;Femme;cursus L;initiale;Hors domaine;Bac étranger;1.0;
+2022/2023;Femme;cursus L;apprentis;;Bac étranger;12.0;
+2022/2023;Femme;cursus L;initiale;;Bac général;23.0;8.0
+2022/2023;Femme;cursus L;apprentis;;;1.0;
+2022/2023;Femme;cursus L;initiale;;Bac techno;36.0;22.0
+2022/2023;Femme;cursus L;continue;;Bac pro;4.0;
+2022/2023;Femme;cursus L;initiale;;Bac étranger;3.0;1.0
+2022/2023;Femme;cursus M;initiale;Sciences Humaines et Sociales;Equivalence;1.0;
+2022/2023;Femme;cursus L;apprentis;Arts, Lettres et Langues;Bac général;58.0;
+2022/2023;Femme;cursus M;initiale;Multi-domaine;Bac pro;10.0;
+2022/2023;Femme;cursus L;apprentis;Sciences, Technologies, Santé;Bac techno;42.0;23.0
+2022/2023;Femme;cursus M;initiale;Multi-domaine;Equivalence;8.0;
+2022/2023;Femme;cursus L;apprentis;Sciences, Technologies, Santé;Bac pro;4.0;1.0
+2022/2023;Femme;cursus M;apprentis;Multi-domaine;Bac général;233.0;
+2022/2023;Femme;cursus L;apprentis;Sciences, Technologies, Santé;Bac étranger;4.0;
+2022/2023;Femme;cursus M;apprentis;Multi-domaine;Bac techno;32.0;
+2022/2023;Femme;cursus L;apprentis;;Bac général;172.0;
+2022/2023;Femme;cursus M;continue;Multi-domaine;Bac général;11.0;
+2022/2023;Femme;cursus L;apprentis;;Bac techno;116.0;
+2022/2023;Femme;cursus D;initiale;Domaine inconnu;Bac techno;1.0;
+2022/2023;Femme;cursus L;continue;Arts, Lettres et Langues;Bac général;2.0;
+2022/2023;Femme;cursus D;initiale;Domaine inconnu;Equivalence;50.0;
+2022/2023;Femme;cursus L;continue;Arts, Lettres et Langues;Bac étranger;2.0;
+2022/2023;Homme;cursus L;initiale;Arts, Lettres et Langues;Bac pro;89.0;14.0
+2022/2023;Femme;cursus L;continue;Arts, Lettres et Langues;Equivalence;1.0;
+2022/2023;Homme;cursus L;initiale;Arts, Lettres et Langues;Bac étranger;317.0;59.0
+2022/2023;Femme;cursus L;continue;;Bac général;17.0;
+2022/2023;Homme;cursus L;initiale;Arts, Lettres et Langues;;2.0;
+2022/2023;Femme;cursus L;continue;;Bac techno;8.0;
+2022/2023;Homme;cursus L;initiale;Sciences, Technologies, Santé;Bac pro;13.0;7.0
+2022/2023;Femme;cursus L;continue;;Sans bac;37.0;
+2022/2023;Homme;cursus L;initiale;Sciences, Technologies, Santé;;1.0;1.0
+2022/2023;Femme;cursus M;initiale;Sciences Humaines et Sociales;Bac techno;5.0;
+2022/2023;Homme;cursus L;initiale;Multi-domaine;Bac général;50.0;17.0
+2022/2023;Femme;cursus M;initiale;Multi-domaine;Bac techno;70.0;
+2022/2023;Homme;cursus L;initiale;Multi-domaine;Bac étranger;4.0;
+2022/2023;Femme;cursus M;apprentis;Multi-domaine;Bac étranger;62.0;
+2022/2023;Homme;cursus L;initiale;Hors domaine;Bac étranger;1.0;
+2022/2023;Femme;cursus M;continue;Multi-domaine;Bac pro;3.0;
+2022/2023;Homme;cursus L;initiale;;Bac pro;19.0;8.0
+2022/2023;Femme;cursus M;continue;;Bac général;27.0;
+2022/2023;Homme;cursus L;initiale;;Bac étranger;2.0;
+2022/2023;Femme;cursus M;continue;;Bac étranger;4.0;
+2022/2023;Homme;cursus L;initiale;;Equivalence;4.0;
+2022/2023;Femme;cursus D;initiale;Domaine inconnu;Bac général;19.0;
+2022/2023;Homme;cursus L;apprentis;Arts, Lettres et Langues;Bac général;55.0;
+2022/2023;Femme;cursus D;initiale;Domaine inconnu;Bac étranger;11.0;
+2022/2023;Homme;cursus L;apprentis;Arts, Lettres et Langues;Bac étranger;6.0;
+2022/2023;Homme;cursus L;initiale;Arts, Lettres et Langues;Bac général;1889.0;682.0
+2022/2023;Homme;cursus L;apprentis;Sciences, Technologies, Santé;Bac général;139.0;27.0
+2022/2023;Homme;cursus L;initiale;Arts, Lettres et Langues;Bac techno;262.0;88.0
+2022/2023;Homme;cursus L;apprentis;;Bac pro;59.0;
+2022/2023;Homme;cursus L;initiale;Sciences, Technologies, Santé;Bac général;264.0;118.0
+2022/2023;Homme;cursus L;apprentis;;Bac étranger;9.0;
+2022/2023;Homme;cursus L;initiale;Sciences, Technologies, Santé;Bac techno;209.0;117.0
+2022/2023;Homme;cursus L;continue;;Bac général;31.0;3.0
+2022/2023;Homme;cursus L;initiale;Multi-domaine;Bac techno;2.0;
+2022/2023;Homme;cursus L;continue;;Bac techno;10.0;1.0
+2022/2023;Homme;cursus L;apprentis;Arts, Lettres et Langues;Bac techno;19.0;
+2022/2023;Homme;cursus L;continue;;Bac pro;5.0;
+2022/2023;Homme;cursus L;apprentis;Arts, Lettres et Langues;Bac pro;3.0;
+2022/2023;Homme;cursus L;continue;;Sans bac;12.0;
+2022/2023;Homme;cursus L;apprentis;Sciences, Technologies, Santé;Bac techno;51.0;10.0
+2022/2023;Homme;cursus M;initiale;Sciences Humaines et Sociales;Bac techno;2.0;
+2022/2023;Homme;cursus L;continue;Arts, Lettres et Langues;Bac pro;1.0;
+2022/2023;Homme;cursus M;initiale;Sciences Humaines et Sociales;Bac pro;1.0;
+2022/2023;Homme;cursus L;continue;;Bac étranger;6.0;
+2022/2023;Homme;cursus M;initiale;Sciences Humaines et Sociales;Equivalence;1.0;
+2022/2023;Homme;cursus L;continue;;Equivalence;4.0;
+2022/2023;Homme;cursus M;initiale;Multi-domaine;Bac étranger;346.0;
+2022/2023;Homme;cursus M;initiale;Multi-domaine;Bac général;382.0;
+2022/2023;Homme;cursus M;apprentis;Multi-domaine;Bac général;187.0;
+2022/2023;Homme;cursus M;initiale;Multi-domaine;Bac techno;46.0;
+2022/2023;Homme;cursus M;continue;Multi-domaine;Bac général;9.0;
+2022/2023;Homme;cursus M;initiale;Multi-domaine;Equivalence;5.0;
+2022/2023;Homme;cursus M;continue;Multi-domaine;Bac pro;2.0;
+2022/2023;Homme;cursus M;apprentis;Multi-domaine;Bac techno;56.0;
+2022/2023;Homme;cursus M;continue;Multi-domaine;Bac étranger;3.0;
+2022/2023;Homme;cursus M;apprentis;Multi-domaine;Bac étranger;71.0;
+2022/2023;Homme;cursus M;continue;Multi-domaine;Equivalence;1.0;
+2022/2023;Homme;cursus M;continue;Multi-domaine;Bac techno;7.0;
+2022/2023;Homme;cursus D;initiale;Domaine inconnu;Bac techno;1.0;
+2022/2023;Homme;cursus D;initiale;Domaine inconnu;Bac général;21.0;
+2022/2023;Homme;cursus D;initiale;Sciences Humaines et Sociales;Bac étranger;1.0;
