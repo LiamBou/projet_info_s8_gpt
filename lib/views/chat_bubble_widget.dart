@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class ChatBubble extends StatelessWidget {
   final String text;
   final bool isUser;
+  final bool isLoading;
 
-  const ChatBubble({super.key, required this.text, required this.isUser});
+  const ChatBubble(
+      {super.key,
+      required this.text,
+      required this.isUser,
+      required this.isLoading});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +25,7 @@ class ChatBubble extends StatelessWidget {
               backgroundImage: AssetImage(
                 'assets/ia_user.png',
               ),
-              radius: 25,
+              radius: 20,
             ),
           ),
         Container(
@@ -38,12 +44,15 @@ class ChatBubble extends StatelessWidget {
                       topRight: Radius.circular(20),
                       bottomRight: Radius.circular(20),
                     )),
-          child: Text(
-            text,
-            style: const TextStyle(
-              color: Colors.white,
-            ),
-          ),
+          child: isLoading
+              ? LoadingAnimationWidget.fourRotatingDots(
+                  color: Colors.black, size: 25)
+              : Text(
+                  text,
+                  style: const TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
         ),
         if (isUser)
           Container(
@@ -52,7 +61,7 @@ class ChatBubble extends StatelessWidget {
               backgroundImage: AssetImage(
                 'assets/user_profile.png',
               ),
-              radius: 25,
+              radius: 20,
             ),
           ),
       ],

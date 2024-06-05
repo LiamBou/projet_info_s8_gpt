@@ -14,6 +14,7 @@ class UserInput extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(10),
       child: TextField(
+        autofocus: false,
         decoration: InputDecoration(
           hintText: 'Posez une question...',
           suffixIcon: IconButton(

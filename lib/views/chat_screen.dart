@@ -19,10 +19,12 @@ class ChatScreen extends StatelessWidget {
                 ChatBubble(
                   text: 'Hello World !$id',
                   isUser: true,
+                  isLoading: false,
                 ),
                 const ChatBubble(
                   text: 'Hello Flutter !',
                   isUser: false,
+                  isLoading: true,
                 ),
               ],
             ),
