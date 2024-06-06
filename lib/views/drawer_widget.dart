@@ -1,27 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:projet_info_s8_gpt/models/conversation.dart';
+import 'package:projet_info_s8_gpt/providers/conversation_provider.dart';
 import 'package:provider/provider.dart';
-import '../models/chat.dart';
-import '../providers/chat_provider.dart';
-import 'chat_screen.dart';
 
 class CustomDrawer extends StatefulWidget {
-  final void Function() selectPage;
+  final void Function(Conversation) selectConversation;
 
-  const CustomDrawer({super.key, required this.selectPage});
+  const CustomDrawer({super.key, required this.selectConversation});
 
   @override
   State<CustomDrawer> createState() => _CustomDrawerState();
 }
 
 class _CustomDrawerState extends State<CustomDrawer> {
-  void selectPage(int page) {
-    widget.selectPage();
+  void selectConv(Conversation conversation) {
+    widget.selectConversation(conversation);
   }
 
   @override
   Widget build(BuildContext context) {
-    List<Chat> chats = context.read<ChatProvider>().chatList;
-
+    List<Conversation> conversations =
+        context.watch<ConversationProvider>().conversationList;
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -36,7 +35,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
               ],
             ),
           ),
-          for (int i = 0; i < chats.length; i++)
+          for (int i = 0; i < conversations.length; i++)
             Padding(
               padding: const EdgeInsets.only(left: 8, right: 8, bottom: 5),
               child: ListTile(
@@ -44,16 +43,32 @@ class _CustomDrawerState extends State<CustomDrawer> {
                     borderRadius: BorderRadius.all(Radius.circular(20))),
                 enabled: true,
                 leading: const Icon(Icons.message),
-                title: Text('Chat ${chats[i].id}'),
+                title: Text(conversations[i].name),
                 selectedTileColor: Colors.blue[200],
-                selected: false,
                 splashColor: Colors.blue[200],
                 onTap: () {
-                  selectPage(i);
+                  selectConv(conversations[i]);
                   Navigator.pop(context);
                 },
               ),
             ),
+          Container(
+            margin: const EdgeInsets.all(10),
+            child: ElevatedButton(
+              onPressed: () {
+                context.read<ConversationProvider>().addConversation(
+                    Conversation(
+                        id: conversations.length + 1,
+                        name: 'Conversation ${conversations.length + 1}'));
+              },
+              onLongPress: () {
+                debugPrint('Deleting conversation');
+                context.read<ConversationProvider>().deleteConversation(
+                    conversations[conversations.length - 1].id ?? 0);
+              },
+              child: const Text('Add Conversation'),
+            ),
+          ),
         ],
       ),
     );

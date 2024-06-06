@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projet_info_s8_gpt/models/chat.dart';
 import 'package:projet_info_s8_gpt/models/conversation.dart';
 import 'package:projet_info_s8_gpt/providers/chat_provider.dart';
 import 'package:projet_info_s8_gpt/providers/conversation_provider.dart';
@@ -8,6 +7,7 @@ import 'views/chat_screen.dart';
 import 'views/drawer_widget.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => ChatProvider()),
@@ -43,29 +43,32 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  void selectPage() {
-    print("select page called");
-  }
-
-  int selectedPage = 0;
-
   @override
   Widget build(BuildContext context) {
-    List<Chat> chats = context.read<ChatProvider>().chatList;
     List<Conversation> conversations =
         context.read<ConversationProvider>().conversationList;
+
+    Conversation? selectedConversation;
+    conversations.isEmpty
+        ? selectedConversation = null
+        : selectedConversation = conversations.first;
+
+    void selectPage(Conversation conversation) {
+      setState(() {
+        selectedConversation = conversation;
+      });
+      debugPrint('Selected conversation: ${conversation.name}');
+    }
 
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
       ),
-      drawer: CustomDrawer(selectPage: selectPage),
+      drawer: CustomDrawer(selectConversation: selectPage),
       drawerEdgeDragWidth: MediaQuery.of(context).size.width,
       body: Center(
-        child: chats.isEmpty
-            ? const Text('No chats available')
-            : ChatScreen(id: selectedPage),
+        child: ChatScreen(conversation: selectedConversation),
       ),
     );
   }

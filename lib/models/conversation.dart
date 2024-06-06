@@ -1,9 +1,9 @@
 class Conversation {
-  final int id;
+  int? id;
   final String name;
 
-  const Conversation({
-    required this.id,
+  Conversation({
+    this.id,
     required this.name,
   });
 

@@ -12,7 +12,7 @@ class ChatDatabaseInterface {
 
   static const String databaseName = 'chat.db';
 
-  static const int versionNumber = 1;
+  static const int versionNumber = 3;
 
   static const String colId = 'id';
 
@@ -76,7 +76,7 @@ class ChatDatabaseInterface {
     // Insert default conversation
     await db.insert(
       conversationTableName,
-      const Conversation(id: 0, name: 'Conversation').toMap(),
+      Conversation(id: 0, name: 'Conversation').toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
@@ -101,7 +101,7 @@ class ChatDatabaseInterface {
     return maps.map((e) => Chat.fromMap(e)).toList();
   }
 
-  Future<List<Chat>> chatsByConversation(String conversationId) async {
+  Future<List<Chat>> chatsByConversation(int conversationId) async {
     final Database db = await database;
     final List<Map<String, dynamic>> maps = await db.query(
       chatTableName,
@@ -140,7 +140,7 @@ class ChatDatabaseInterface {
     );
   }
 
-  Future<int> deleteChatsByConversation(String conversationId) async {
+  Future<int> deleteChatsByConversation(int conversationId) async {
     final Database db = await database;
     return await db.delete(
       chatTableName,

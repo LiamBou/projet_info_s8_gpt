@@ -1,12 +1,12 @@
 class Chat {
-  final int id;
+  int? id;
   final int conversationId;
   final String message;
-  final String sentAt;
+  final DateTime sentAt;
   final bool isUser;
 
-  const Chat(
-      {required this.id,
+  Chat(
+      {this.id,
       required this.conversationId,
       required this.message,
       required this.sentAt,
@@ -17,7 +17,7 @@ class Chat {
       'id': id,
       'conversationId': conversationId,
       'message': message,
-      'sentAt': sentAt,
+      'sentAt': sentAt.toString(),
       'isUser': isUser ? 1 : 0,
     };
   }
@@ -28,7 +28,7 @@ class Chat {
       conversationId: map['conversationId'],
       message: map['message'],
       isUser: map['isUser'] == 1,
-      sentAt: map['sentAt'],
+      sentAt: DateTime.parse(map['sentAt']),
     );
   }
 }

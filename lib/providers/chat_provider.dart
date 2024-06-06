@@ -7,8 +7,10 @@ class ChatProvider extends ChangeNotifier {
       ChatDatabaseInterface.instance;
 
   List<Chat> _chatList = [];
+  Map<int, List<Chat>> _chatsByConversation = {};
 
   List<Chat> get chatList => _chatList;
+  Map<int, List<Chat>> get chatsByConversation => _chatsByConversation;
 
   ChatProvider() {
     loadChats();
@@ -16,6 +18,15 @@ class ChatProvider extends ChangeNotifier {
 
   Future<void> loadChats() async {
     _chatList = await _databaseInterface.chats;
+
+    _chatsByConversation.clear();
+    for (Chat chat in _chatList) {
+      if (_chatsByConversation.containsKey(chat.conversationId)) {
+        _chatsByConversation[chat.conversationId]!.add(chat);
+      } else {
+        _chatsByConversation[chat.conversationId] = [chat];
+      }
+    }
     notifyListeners();
   }
 
@@ -34,7 +45,7 @@ class ChatProvider extends ChangeNotifier {
     loadChats();
   }
 
-  Future<void> deleteChatsByConversation(String conversationId) async {
+  Future<void> deleteChatsByConversation(int conversationId) async {
     await _databaseInterface.deleteChatsByConversation(conversationId);
     loadChats();
   }
