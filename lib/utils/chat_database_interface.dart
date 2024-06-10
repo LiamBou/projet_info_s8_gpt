@@ -12,7 +12,7 @@ class ChatDatabaseInterface {
 
   static const String databaseName = 'chat.db';
 
-  static const int versionNumber = 3;
+  static const int versionNumber = 6;
 
   static const String colId = 'id';
 
@@ -24,6 +24,7 @@ class ChatDatabaseInterface {
 
   static const String conversationTableName = 'Conversation';
   static const String colName = 'name';
+  static const String colSelected = 'selected';
 
   Future<Database> get database async {
     if (_database != null && _database!.isOpen) {
@@ -58,7 +59,8 @@ class ChatDatabaseInterface {
     await db.execute('''
       CREATE TABLE $conversationTableName (
         $colId INTEGER PRIMARY KEY AUTOINCREMENT,
-        $colName TEXT NOT NULL
+        $colName TEXT NOT NULL,
+        $colSelected INTEGER NOT NULL
       )
     ''');
 
@@ -76,7 +78,7 @@ class ChatDatabaseInterface {
     // Insert default conversation
     await db.insert(
       conversationTableName,
-      Conversation(id: 0, name: 'Conversation').toMap(),
+      Conversation(id: 0, name: 'Conversation', selected: true).toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
@@ -176,6 +178,15 @@ class ChatDatabaseInterface {
     );
   }
 
+  Future<int> updateConversationName(int id, String name) async {
+    final Database db = await database;
+    return await db.rawUpdate('''
+      UPDATE $conversationTableName
+      SET $colName = ?
+      WHERE $colId = ?
+    ''', [name, id]);
+  }
+
   Future<int> deleteConversation(int id) async {
     final Database db = await database;
     return await db.delete(
@@ -183,5 +194,31 @@ class ChatDatabaseInterface {
       where: '$colId = ?',
       whereArgs: [id],
     );
+  }
+
+  Future<Conversation> get selectedConversation async {
+    final Database db = await database;
+    final List<Map<String, dynamic>> maps = await db.query(
+      conversationTableName,
+      where: '$colSelected = ?',
+      whereArgs: [1],
+    );
+
+    return Conversation.fromMap(maps.first);
+  }
+
+  Future<int> updateSelectedConversation(int oldID, int newID) async {
+    final Database db = await database;
+    return await db.rawUpdate('''
+      UPDATE $conversationTableName
+      SET $colSelected = 0
+      WHERE $colId = ?
+    ''', [oldID]).then((value) async {
+      return await db.rawUpdate('''
+        UPDATE $conversationTableName
+        SET $colSelected = 1
+        WHERE $colId = ?
+      ''', [newID]);
+    });
   }
 }

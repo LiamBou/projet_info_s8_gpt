@@ -47,10 +47,15 @@ class ChatBubble extends StatelessWidget {
           child: (isLoading ?? false)
               ? LoadingAnimationWidget.fourRotatingDots(
                   color: Colors.black, size: 25)
-              : Text(
-                  text,
-                  style: const TextStyle(
-                    color: Colors.white,
+              : Container(
+                  constraints: BoxConstraints(
+                    maxWidth: MediaQuery.of(context).size.width * 0.6,
+                  ),
+                  child: Text(
+                    text,
+                    style: const TextStyle(
+                      color: Colors.white,
+                    ),
                   ),
                 ),
         ),

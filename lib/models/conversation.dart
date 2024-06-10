@@ -1,16 +1,19 @@
 class Conversation {
   int? id;
-  final String name;
+  late final String name;
+  bool? selected;
 
   Conversation({
     this.id,
     required this.name,
+    required this.selected,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'name': name,
+      'selected': selected,
     };
   }
 
@@ -18,6 +21,7 @@ class Conversation {
     return Conversation(
       id: map['id'],
       name: map['name'],
+      selected: map['selected'] == 1,
     );
   }
 }

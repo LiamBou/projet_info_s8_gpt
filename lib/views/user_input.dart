@@ -26,13 +26,16 @@ class _UserInputState extends State<UserInput> {
       child: TextField(
         keyboardType: TextInputType.multiline,
         minLines: 1,
-        maxLines: 10,
+        maxLines: 6,
         autofocus: false,
         decoration: InputDecoration(
           hintText: 'Posez une question...',
           suffixIcon: IconButton(
               icon: const Icon(Icons.send),
               onPressed: () {
+                if (_controller.text.trim().isEmpty) {
+                  return;
+                }
                 context.read<ChatProvider>().addChat(Chat(
                     message: _controller.text,
                     isUser: true,

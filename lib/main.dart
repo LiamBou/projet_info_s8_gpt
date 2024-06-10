@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projet_info_s8_gpt/models/conversation.dart';
 import 'package:projet_info_s8_gpt/providers/chat_provider.dart';
 import 'package:projet_info_s8_gpt/providers/conversation_provider.dart';
 import 'package:provider/provider.dart';
@@ -45,30 +44,15 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    List<Conversation> conversations =
-        context.read<ConversationProvider>().conversationList;
-
-    Conversation? selectedConversation;
-    conversations.isEmpty
-        ? selectedConversation = null
-        : selectedConversation = conversations.first;
-
-    void selectPage(Conversation conversation) {
-      setState(() {
-        selectedConversation = conversation;
-      });
-      debugPrint('Selected conversation: ${conversation.name}');
-    }
-
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
       ),
-      drawer: CustomDrawer(selectConversation: selectPage),
+      drawer: const CustomDrawer(),
       drawerEdgeDragWidth: MediaQuery.of(context).size.width,
-      body: Center(
-        child: ChatScreen(conversation: selectedConversation),
+      body: const Center(
+        child: ChatScreen(),
       ),
     );
   }
