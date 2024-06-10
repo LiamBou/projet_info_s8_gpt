@@ -1,0 +1,1 @@
+ C:\\Users\\bouli\\Documents\\INSA\\4A\\projet_info_s8_gpt\\.dart_tool\\flutter_build\\b8c0b927121f97ba5506a64fcd3a3c8c\\native_assets.yaml: 

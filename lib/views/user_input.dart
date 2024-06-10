@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:projet_info_s8_gpt/providers/chat_provider.dart';
+import 'package:projet_info_s8_gpt/utils/chat_api_interface.dart';
 import 'package:provider/provider.dart';
-import '../models/chat.dart';
+import 'package:projet_info_s8_gpt/models/chat.dart';
 
 class UserInput extends StatefulWidget {
   final int conversationId;
@@ -42,6 +43,18 @@ class _UserInputState extends State<UserInput> {
                     conversationId: widget.conversationId,
                     sentAt: DateTime.now()));
                 widget.setDisplayLoading(true);
+                ChatApiInterface.instance
+                    .askPrompt(
+                        Chat(
+                            message: _controller.text,
+                            isUser: true,
+                            conversationId: widget.conversationId,
+                            sentAt: DateTime.now()),
+                        widget.conversationId)
+                    .then((value) {
+                  widget.setDisplayLoading(false);
+                  context.read<ChatProvider>().addChat(value!);
+                });
                 _controller.clear();
               }),
         ),
