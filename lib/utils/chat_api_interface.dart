@@ -29,7 +29,7 @@ class ChatApiInterface {
     return Chat(
       conversationId: conversationId,
       isUser: false,
-      message: (data['Question'] ?? "Erreur lors de la réponse API") as String,
+      message: (data['answer'] ?? "Erreur lors de la réponse API") as String,
       sentAt: DateTime.now(),
     );
   }
