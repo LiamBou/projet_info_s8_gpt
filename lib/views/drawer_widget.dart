@@ -42,10 +42,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                 DrawerHeader(
                   child: Column(
                     children: [
-                      const CircleAvatar(
-                        backgroundImage: AssetImage('assets/user_profile.png'),
-                        radius: 40,
-                      ),
+                      const Icon(Icons.person, size: 80),
                       Container(
                         margin: const EdgeInsets.only(top: 5),
                         child: ElevatedButton(
@@ -126,7 +123,10 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       title: Text(conversations[i].name),
                       selected: conversationSelected &&
                           conversations[i].id == selectedConversation.id,
-                      selectedTileColor: Colors.blue[100],
+                      selectedTileColor:
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Colors.blueGrey
+                              : Colors.blue[100],
                       onTap: () {
                         context
                             .read<ConversationProvider>()

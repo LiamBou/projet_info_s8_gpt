@@ -21,9 +21,12 @@ class ChatBubble extends StatelessWidget {
         if (!isUser)
           Container(
             margin: const EdgeInsets.only(left: 5),
-            child: const CircleAvatar(
-              backgroundImage: AssetImage(
-                'assets/ia_user.png',
+            child: CircleAvatar(
+              backgroundColor: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.white
+                  : Colors.transparent,
+              foregroundImage: const AssetImage(
+                'assets/universite-evry.png',
               ),
               radius: 20,
             ),
@@ -61,14 +64,11 @@ class ChatBubble extends StatelessWidget {
         ),
         if (isUser)
           Container(
-            margin: const EdgeInsets.only(right: 5),
-            child: const CircleAvatar(
-              backgroundImage: AssetImage(
-                'assets/user_profile.png',
-              ),
-              radius: 20,
-            ),
-          ),
+              margin: const EdgeInsets.only(right: 5),
+              child: const Icon(
+                Icons.person,
+                color: Colors.blue,
+              )),
       ],
     );
   }
