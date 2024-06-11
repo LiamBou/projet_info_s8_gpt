@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
       valueListenable: themeModeNotifier,
       builder: (_, ThemeMode currentTheme, __) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           title: 'GPT-Evry-Chatbot',
           theme: ThemeData(
             primarySwatch: Colors.blue,
