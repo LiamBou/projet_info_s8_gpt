@@ -32,85 +32,82 @@ class _CustomDrawerState extends State<CustomDrawer> {
     final _suggestionController = TextEditingController();
 
     return Drawer(
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          DrawerHeader(
+            child: Column(
+              children: [
+                const Icon(
+                  Icons.person,
+                  size: 80,
+                  color: Color.fromRGBO(224, 111, 36, 1),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 5),
+                  child: ElevatedButton(
+                    onPressed: () => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => Dialog(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                                margin: const EdgeInsets.all(10),
+                                child: const Text('Faire une suggestion')),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: TextField(
+                                controller: _userController,
+                                decoration: const InputDecoration(
+                                  hintText: "Nom de l'utilisateur",
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: TextField(
+                                controller: _suggestionController,
+                                minLines: 1,
+                                maxLines: 5,
+                                decoration: const InputDecoration(
+                                  hintText: 'Entrez votre suggestion',
+                                ),
+                              ),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                if (_suggestionController.text.trim().isEmpty ||
+                                    _userController.text.trim().isEmpty) {
+                                  return;
+                                }
+                                Navigator.of(context).pop();
+                                SuggestionApiInterface.instance.putSuggestion(
+                                    Suggestion(
+                                        username: _userController.text,
+                                        description: _suggestionController.text,
+                                        date: DateTime.now().toString()),
+                                    context);
+                              },
+                              child: const Text('Envoyer'),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    child: const Text('Faire une suggestion'),
+                  ),
+                ),
+              ],
+            ),
+          ),
           Expanded(
             child: ListView(
               padding: EdgeInsets.zero,
               children: <Widget>[
-                DrawerHeader(
-                  child: Column(
-                    children: [
-                      const Icon(Icons.person, size: 80),
-                      Container(
-                        margin: const EdgeInsets.only(top: 5),
-                        child: ElevatedButton(
-                          onPressed: () => showDialog<String>(
-                            context: context,
-                            builder: (BuildContext context) => Dialog(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                      margin: const EdgeInsets.all(10),
-                                      child:
-                                          const Text('Faire une suggestion')),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: TextField(
-                                      controller: _userController,
-                                      decoration: const InputDecoration(
-                                        hintText: "Nom de l'utilisateur",
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: TextField(
-                                      controller: _suggestionController,
-                                      minLines: 1,
-                                      maxLines: 5,
-                                      decoration: const InputDecoration(
-                                        hintText: 'Entrez votre suggestion',
-                                      ),
-                                    ),
-                                  ),
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      if (_suggestionController.text
-                                              .trim()
-                                              .isEmpty ||
-                                          _userController.text.trim().isEmpty) {
-                                        return;
-                                      }
-                                      Navigator.of(context).pop();
-                                      SuggestionApiInterface.instance
-                                          .putSuggestion(
-                                              Suggestion(
-                                                  username:
-                                                      _userController.text,
-                                                  description:
-                                                      _suggestionController
-                                                          .text,
-                                                  date: DateTime.now()
-                                                      .toString()),
-                                              context);
-                                    },
-                                    child: const Text('Envoyer'),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          child: const Text('Faire une suggestion'),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
                 for (int i = 0; i < conversations.length; i++)
                   Padding(
                     padding:
@@ -120,13 +117,40 @@ class _CustomDrawerState extends State<CustomDrawer> {
                           borderRadius: BorderRadius.all(Radius.circular(20))),
                       enabled: true,
                       leading: const Icon(Icons.message),
+                      trailing: IconButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor:
+                                const Color.fromRGBO(0, 87, 147, 1),
+                          ),
+                          onPressed: () {
+                            int newID;
+                            if (i > 0) {
+                              newID = conversations[i - 1].id ?? 0;
+                            } else if (i < conversations.length - 1) {
+                              newID = conversations[i + 1].id ?? 0;
+                            } else {
+                              newID = 0;
+                            }
+                            context
+                                .read<ConversationProvider>()
+                                .updateSelectedConversation(
+                                    selectedConversation?.id ?? 0, newID);
+                            context
+                                .read<ConversationProvider>()
+                                .deleteConversation(conversations[i].id ?? 0);
+                          },
+                          icon: const Icon(Icons.delete)),
                       title: Text(conversations[i].name),
                       selected: conversationSelected &&
                           conversations[i].id == selectedConversation.id,
                       selectedTileColor:
                           Theme.of(context).brightness == Brightness.dark
-                              ? Colors.blueGrey
-                              : Colors.blue[100],
+                              ? const Color.fromRGBO(0, 87, 147, 1)
+                              : const Color.fromRGBO(0, 87, 147, 1),
+                      selectedColor:
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : Colors.white,
                       onTap: () {
                         context
                             .read<ConversationProvider>()

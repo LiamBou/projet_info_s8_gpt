@@ -42,6 +42,8 @@ dependencies:
   collection: ^1.18.0
   http: ^1.2.1
   adaptive_theme: ^3.6.0
+  flutter_markdown: ^0.7.2
+  url_launcher: ^6.3.0
 
 dev_dependencies:
   flutter_test:
