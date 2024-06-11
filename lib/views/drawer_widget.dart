@@ -4,7 +4,10 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:projet_info_s8_gpt/models/conversation.dart';
 import 'package:projet_info_s8_gpt/providers/conversation_provider.dart';
+import 'package:projet_info_s8_gpt/utils/suggestion_api_interface.dart';
 import 'package:provider/provider.dart';
+
+import '../models/suggestion.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
@@ -87,27 +90,17 @@ class _CustomDrawerState extends State<CustomDrawer> {
                                         return;
                                       }
                                       Navigator.of(context).pop();
-                                      showDialog(
-                                          context: context,
-                                          builder: (BuildContext context) =>
-                                              AlertDialog(
-                                                title: const Text(
-                                                    'Merci pour votre suggestion !'),
-                                                content: const Icon(
-                                                  Icons.check_circle_rounded,
-                                                  color: Colors.green,
-                                                  size: 50,
-                                                ),
-                                                actions: <Widget>[
-                                                  TextButton(
-                                                    onPressed: () {
-                                                      Navigator.of(context)
-                                                          .pop();
-                                                    },
-                                                    child: const Text('OK'),
-                                                  ),
-                                                ],
-                                              ));
+                                      SuggestionApiInterface.instance
+                                          .putSuggestion(
+                                              Suggestion(
+                                                  username:
+                                                      _userController.text,
+                                                  description:
+                                                      _suggestionController
+                                                          .text,
+                                                  date: DateTime.now()
+                                                      .toString()),
+                                              context);
                                     },
                                     child: const Text('Envoyer'),
                                   ),
