@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ChatBubble extends StatelessWidget {
   final String text;
@@ -17,13 +19,17 @@ class ChatBubble extends StatelessWidget {
     return Row(
       mainAxisAlignment:
           isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         if (!isUser)
           Container(
-            margin: const EdgeInsets.only(left: 5),
-            child: const CircleAvatar(
-              backgroundImage: AssetImage(
-                'assets/ia_user.png',
+            margin: const EdgeInsets.only(left: 5, bottom: 15),
+            child: CircleAvatar(
+              backgroundColor: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.white
+                  : Colors.transparent,
+              foregroundImage: const AssetImage(
+                'assets/universite-evry.png',
               ),
               radius: 20,
             ),
@@ -32,7 +38,9 @@ class ChatBubble extends StatelessWidget {
           margin: const EdgeInsets.all(10),
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
-              color: isUser ? Colors.blue : Colors.pinkAccent,
+              color: isUser
+                  ? const Color.fromRGBO(224, 111, 36, 1)
+                  : const Color.fromRGBO(0, 87, 147, 1),
               borderRadius: isUser
                   ? const BorderRadius.only(
                       topLeft: Radius.circular(20),
@@ -46,30 +54,43 @@ class ChatBubble extends StatelessWidget {
                     )),
           child: (isLoading ?? false)
               ? LoadingAnimationWidget.fourRotatingDots(
-                  color: Colors.black, size: 25)
+                  color: Colors.white, size: 25)
               : Container(
                   constraints: BoxConstraints(
                     maxWidth: MediaQuery.of(context).size.width * 0.6,
                   ),
-                  child: Text(
-                    text,
-                    style: const TextStyle(
-                      color: Colors.white,
+                  child: MarkdownBody(
+                    selectable: true,
+                    onTapLink: (text, href, title) async {
+                      if (!context.mounted) return;
+                      await _launchUrl(href);
+                    },
+                    data: text,
+                    styleSheet: MarkdownStyleSheet(
+                      p: const TextStyle(
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
         ),
         if (isUser)
           Container(
-            margin: const EdgeInsets.only(right: 5),
-            child: const CircleAvatar(
-              backgroundImage: AssetImage(
-                'assets/user_profile.png',
-              ),
-              radius: 20,
-            ),
-          ),
+              margin: const EdgeInsets.only(right: 5, bottom: 15),
+              child: const Icon(
+                Icons.person,
+                color: Color.fromRGBO(224, 111, 36, 1),
+              )),
       ],
     );
+  }
+}
+
+Future<void> _launchUrl(String? href) async {
+  Uri url = Uri.parse(href!);
+  if (await canLaunchUrl(url)) {
+    await launchUrl(url);
+  } else {
+    throw 'Could not launch $url';
   }
 }
