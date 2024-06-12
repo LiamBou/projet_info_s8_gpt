@@ -80,6 +80,7 @@ class ChatBubble extends StatelessWidget {
               child: const Icon(
                 Icons.person,
                 color: Color.fromRGBO(224, 111, 36, 1),
+                size: 30,
               )),
       ],
     );
