@@ -40,8 +40,12 @@ class _ChatBubbleState extends State<ChatBubble> {
       children: [
         if (!widget.isUser)
           Container(
-            margin: const EdgeInsets.only(left: 5, bottom: 15),
-            padding: const EdgeInsets.only(bottom: 32),
+            margin: (widget.isLoading ?? false)
+                ? const EdgeInsets.only(left: 5)
+                : const EdgeInsets.only(left: 5, bottom: 15),
+            padding: (widget.isLoading ?? false)
+                ? const EdgeInsets.all(0)
+                : const EdgeInsets.only(bottom: 32),
             child: CircleAvatar(
               backgroundColor: Theme.of(context).brightness == Brightness.dark
                   ? Colors.white
