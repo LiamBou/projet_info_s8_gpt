@@ -29,6 +29,7 @@ class _UserInputState extends State<UserInput> {
         minLines: 1,
         maxLines: 6,
         autofocus: false,
+        textCapitalization: TextCapitalization.sentences,
         decoration: InputDecoration(
           hintText: 'Posez une question...',
           suffixIcon: IconButton(

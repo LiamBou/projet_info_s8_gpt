@@ -62,6 +62,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                               padding: const EdgeInsets.all(8.0),
                               child: TextField(
                                 controller: _userController,
+                                textCapitalization: TextCapitalization.words,
                                 decoration: const InputDecoration(
                                   hintText: "Nom de l'utilisateur",
                                 ),
@@ -73,6 +74,8 @@ class _CustomDrawerState extends State<CustomDrawer> {
                                 controller: _suggestionController,
                                 minLines: 1,
                                 maxLines: 5,
+                                textCapitalization:
+                                    TextCapitalization.sentences,
                                 decoration: const InputDecoration(
                                   hintText: 'Entrez votre suggestion',
                                 ),
@@ -119,8 +122,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
                       leading: const Icon(Icons.message),
                       trailing: IconButton(
                           style: ElevatedButton.styleFrom(
-                            backgroundColor:
-                                const Color.fromRGBO(0, 87, 147, 1),
+                            backgroundColor: Colors.transparent,
                           ),
                           onPressed: () {
                             int newID;
