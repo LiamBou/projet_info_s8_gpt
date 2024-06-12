@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       builder: (_, ThemeMode currentTheme, __) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'GPT-Evry-Chatbot',
+          title: 'Chatbot-Evry-Chatbot',
           theme: ThemeData(
             primarySwatch: Colors.blue,
             useMaterial3: true,
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
           ),
           themeMode: currentTheme,
           home: MyHomePage(
-              title: 'GPT App', themeModeNotifier: themeModeNotifier),
+              title: 'Chatbot Saclay', themeModeNotifier: themeModeNotifier),
         );
       },
     );

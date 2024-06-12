@@ -49,4 +49,9 @@ class ChatProvider extends ChangeNotifier {
     await _databaseInterface.deleteChatsByConversation(conversationId);
     loadChats();
   }
+
+  Future<void> updateChatGood(int id, int good) async {
+    await _databaseInterface.updateChatGood(id, good);
+    loadChats();
+  }
 }

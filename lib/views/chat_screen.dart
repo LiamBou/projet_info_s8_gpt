@@ -77,13 +77,14 @@ class _ChatScreenState extends State<ChatScreen> {
                     ...chatProvider.chatsByConversation[conversation.id ?? 0]!
                         .map<Widget>(
                       (Chat chat) => ChatBubble(
+                        chatId: chat.id ?? 0,
                         text: chat.message,
                         isUser: chat.isUser,
                       ),
                     ),
                     (displayLoading)
                         ? const ChatBubble(
-                            text: "", isUser: false, isLoading: true)
+                            chatId: 0, text: "", isUser: false, isLoading: true)
                         : const SizedBox(),
                   ].reversed.toList(),
                 ),

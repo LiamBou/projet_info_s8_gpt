@@ -1,29 +1,47 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:projet_info_s8_gpt/utils/chat_database_interface.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class ChatBubble extends StatelessWidget {
+import '../models/chat.dart';
+import '../providers/chat_provider.dart';
+
+class ChatBubble extends StatefulWidget {
+  final int chatId;
   final String text;
   final bool isUser;
   final bool? isLoading;
 
   const ChatBubble(
       {super.key,
+      required this.chatId,
       required this.text,
       required this.isUser,
       this.isLoading = false});
 
   @override
+  State<ChatBubble> createState() => _ChatBubbleState();
+}
+
+class _ChatBubbleState extends State<ChatBubble> {
+  @override
   Widget build(BuildContext context) {
+    Chat? chat = context
+        .watch<ChatProvider>()
+        .chatList
+        .firstWhereOrNull((element) => element.id == widget.chatId);
     return Row(
       mainAxisAlignment:
-          isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
+          widget.isUser ? MainAxisAlignment.end : MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        if (!isUser)
+        if (!widget.isUser)
           Container(
             margin: const EdgeInsets.only(left: 5, bottom: 15),
+            padding: const EdgeInsets.only(bottom: 32),
             child: CircleAvatar(
               backgroundColor: Theme.of(context).brightness == Brightness.dark
                   ? Colors.white
@@ -34,53 +52,102 @@ class ChatBubble extends StatelessWidget {
               radius: 20,
             ),
           ),
-        Container(
-          margin: const EdgeInsets.all(10),
-          padding: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-              color: isUser
-                  ? const Color.fromRGBO(224, 111, 36, 1)
-                  : const Color.fromRGBO(0, 87, 147, 1),
-              borderRadius: isUser
-                  ? const BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                      bottomLeft: Radius.circular(20),
-                    )
-                  : const BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
-                    )),
-          child: (isLoading ?? false)
-              ? LoadingAnimationWidget.fourRotatingDots(
-                  color: Colors.white, size: 25)
-              : Container(
-                  constraints: BoxConstraints(
-                    maxWidth: MediaQuery.of(context).size.width * 0.6,
-                  ),
-                  child: MarkdownBody(
-                    selectable: true,
-                    onTapLink: (text, href, title) async {
-                      if (!context.mounted) return;
-                      await _launchUrl(href);
-                    },
-                    data: text,
-                    styleSheet: MarkdownStyleSheet(
-                      p: const TextStyle(
-                        color: Colors.white,
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Container(
+              margin: widget.isUser
+                  ? const EdgeInsets.all(10)
+                  : const EdgeInsets.only(right: 10, left: 10, top: 10),
+              padding: const EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                  color: widget.isUser
+                      ? const Color.fromRGBO(224, 111, 36, 1)
+                      : const Color.fromRGBO(0, 87, 147, 1),
+                  borderRadius: widget.isUser
+                      ? const BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
+                          bottomLeft: Radius.circular(20),
+                        )
+                      : const BorderRadius.only(
+                          topLeft: Radius.circular(20),
+                          topRight: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        )),
+              child: (widget.isLoading ?? false)
+                  ? LoadingAnimationWidget.fourRotatingDots(
+                      color: Colors.white, size: 25)
+                  : Container(
+                      constraints: BoxConstraints(
+                        maxWidth: MediaQuery.of(context).size.width * 0.6,
+                      ),
+                      child: MarkdownBody(
+                        selectable: true,
+                        onTapLink: (text, href, title) async {
+                          if (!context.mounted) return;
+                          await _launchUrl(href);
+                        },
+                        data: widget.text,
+                        styleSheet: MarkdownStyleSheet(
+                          p: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ),
+            ),
+            if (!widget.isUser && !(widget.isLoading ?? false))
+              Container(
+                padding: const EdgeInsets.only(right: 15),
+                child: Row(children: [
+                  IconButton(
+                    color: Colors.transparent,
+                    icon: Icon(
+                      Icons.thumb_up,
+                      color: chat?.good == 1 ? Colors.green : Colors.white,
+                    ),
+                    onPressed: () {
+                      if (chat?.good == 1) {
+                        context
+                            .read<ChatProvider>()
+                            .updateChatGood(widget.chatId, 0);
+                      } else {
+                        context
+                            .read<ChatProvider>()
+                            .updateChatGood(widget.chatId, 1);
+                      }
+                    },
                   ),
-                ),
+                  IconButton(
+                    color: Colors.transparent,
+                    icon: Icon(
+                      Icons.thumb_down,
+                      color: chat?.good == -1 ? Colors.red : Colors.white,
+                    ),
+                    onPressed: () {
+                      if (chat?.good == -1) {
+                        context
+                            .read<ChatProvider>()
+                            .updateChatGood(widget.chatId, 0);
+                      } else {
+                        context
+                            .read<ChatProvider>()
+                            .updateChatGood(widget.chatId, -1);
+                      }
+                    },
+                  ),
+                ]),
+              )
+          ],
         ),
-        if (isUser)
+        if (widget.isUser)
           Container(
               margin: const EdgeInsets.only(right: 5, bottom: 15),
               child: const Icon(
                 Icons.person,
                 color: Color.fromRGBO(224, 111, 36, 1),
-                size: 30,
+                size: 35,
               )),
       ],
     );

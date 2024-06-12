@@ -4,13 +4,15 @@ class Chat {
   final String message;
   final DateTime sentAt;
   final bool isUser;
+  int? good;
 
   Chat(
       {this.id,
       required this.conversationId,
       required this.message,
       required this.sentAt,
-      required this.isUser});
+      required this.isUser,
+      this.good});
 
   Map<String, dynamic> toMap() {
     return {
@@ -19,6 +21,7 @@ class Chat {
       'message': message,
       'sentAt': sentAt.toString(),
       'isUser': isUser ? 1 : 0,
+      'good': good ?? 0,
     };
   }
 
@@ -29,6 +32,7 @@ class Chat {
       message: map['message'],
       isUser: map['isUser'] == 1,
       sentAt: DateTime.parse(map['sentAt']),
+      good: map['good'],
     );
   }
 }

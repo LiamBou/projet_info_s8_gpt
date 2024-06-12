@@ -21,6 +21,7 @@ class ChatApiInterface {
         isUser: false,
         message: "Impossible de contacter l'API",
         sentAt: DateTime.now(),
+        good: 0,
       );
     }
 
@@ -31,6 +32,7 @@ class ChatApiInterface {
       isUser: false,
       message: (data['answer'] ?? "Erreur lors de la réponse API") as String,
       sentAt: DateTime.now(),
+      good: 0,
     );
   }
 }

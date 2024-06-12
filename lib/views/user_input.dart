@@ -50,7 +50,8 @@ class _UserInputState extends State<UserInput> {
                             message: _controller.text,
                             isUser: true,
                             conversationId: widget.conversationId,
-                            sentAt: DateTime.now()),
+                            sentAt: DateTime.now(),
+                            good: 0),
                         widget.conversationId)
                     .then((value) {
                   widget.setDisplayLoading(false);
