@@ -6,7 +6,8 @@ from pymongo import MongoClient
 from flask import Flask, request, jsonify
 from bson import ObjectId
 from datetime import datetime
-import faiss
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 
 app = Flask(__name__)
@@ -46,76 +47,60 @@ model = AutoModelForCausalLM.from_pretrained(
 )
 print("Modèle chargé.")
 
-# Sentence Transformer pour trouver le contexte pertinent
-print("Chargement du modèle Sentence Transformer...")
-sentence_model = SentenceTransformer('all-MiniLM-L6-v2')
-sentence_model.to("cuda" if torch.cuda.is_available() else "cpu")
-print("Modèle Sentence Transformer chargé.")
+# Fonction pour extraire les documents et préparer les textes
+def get_documents_from_db():
+    collections = db.list_collection_names()
+    documents = []
+    for collection_name in collections:
+        collection = db[collection_name]
+        docs = list(collection.find({}))
+        for doc in docs:
+            #doc_text = " ".join([str(value) for key, value in doc.items() if key != '_id'])
+            doc_text = f"Collection: {collection_name}, " + " ".join([f"{key}: {value}" for key, value in doc.items() if key != '_id'])
+            documents.append((collection_name, doc['_id'], doc_text))
+    return documents
 
-# Charger l'index FAISS et les ID des documents
-def load_faiss_index_and_ids():
-    print("Chargement de l'index FAISS...")
-    index = faiss.read_index("vectors.index")
-    print("Index FAISS chargé.")
-    
-    print("Chargement des correspondances d'ID...")
-    id_map = []
-    with open("id_map.txt", "r") as f:
-        for line in f:
-            collection_name, doc_id = line.strip().split("\t")
-            id_map.append((collection_name, doc_id))
-    print("Correspondances d'ID chargées.")
-    
-    return index, id_map
+# Extraire les documents de la base de données
+documents = get_documents_from_db()
 
-faiss_index, id_map = load_faiss_index_and_ids()
+# Fonction pour vectoriser les documents et la question
+def vectorize_documents_and_question(question, documents):
+    contexts = [doc[2] for doc in documents]  # Extraire les textes des documents
+    #contexts = [f"Collection: {doc[0]}, Texte: {doc[2]}" for doc in documents]
+    vectorizer = TfidfVectorizer().fit(contexts + [question])  # Ajuster le vectoriseur sur les contextes et la question
+    context_vectors = vectorizer.transform(contexts).toarray()  # Transformer les contextes en vecteurs
+    question_vector = vectorizer.transform([question]).toarray()[0]  # Transformer la question en vecteur
+    return context_vectors, question_vector
 
 # Fonction pour trouver les contextes pertinents
-def find_relevant_contexts(question, index, id_map, sentence_model):
+def find_relevant_contexts(question, documents):
     print(f"Recherche des contextes pertinents pour la question: {question}")
-    
-    # Encoder la question pour obtenir son vecteur d'embedding
-    question_embedding = sentence_model.encode(question, convert_to_tensor=True).cpu().numpy()
-    
-    # Rechercher les contextes les plus pertinents dans l'index FAISS
-    D, I = index.search(np.array([question_embedding]), k=5)  # k=5 pour les 5 contextes les plus pertinents
-    
+
+    context_vectors, question_vector = vectorize_documents_and_question(question, documents)
+
+    # Calculer les similarités cosinus
+    similarities = cosine_similarity([question_vector], context_vectors).flatten()
+    top_k_indices = np.argsort(similarities)[-5:][::-1]  # Indices des 5 contextes les plus similaires, en ordre décroissant
+
     top_k_contexts = []
-    for i in range(len(I[0])):
-        collection_name, doc_id = id_map[I[0][i]]
-        document = db[collection_name].find_one({"_id": ObjectId(doc_id)})
-        if document:
-            # Construire le contexte à partir du document
-            context = f"Collection: {collection_name}, " + ", ".join([f"{key}: {value}" for key, value in document.items() if key != "_id"])
-            top_k_contexts.append(context)
-        else:
-            print(f"Avertissement : Document {doc_id} dans la collection {collection_name} introuvable.")
+    for idx in top_k_indices:
+        collection_name, doc_id, context_text = documents[idx]
+        top_k_contexts.append({
+            "collection": collection_name,
+            "document_id": doc_id,
+            "context": context_text
+        })
     
-    if top_k_contexts:
-        print(f"Contextes pertinents trouvés: {top_k_contexts}")
-    else:
-        print("Aucun contexte pertinent trouvé.")
-    
+    print(f"Contextes pertinents trouvés: {top_k_contexts}")
     return top_k_contexts
 
-
-
 # Fonction pour obtenir une réponse en utilisant le modèle
-def get_answer_combined(question, index, id_map):
-    top_k_contexts = find_relevant_contexts(question, index, id_map, sentence_model)
+def get_answer_combined(question, documents):
+    top_k_contexts = find_relevant_contexts(question, documents)
     if top_k_contexts:
-        combined_context = "\n\n".join([f"Contexte {i+1}: {ctx}" for i, ctx in enumerate(top_k_contexts)])
-        '''prompt = (
-            f"Tu es un chatbot éducatif conçu pour l'université Evry Paris-Saclay."
-            f" Ton rôle est de répondre aux questions des utilisateurs concernant les différents services de l'université,"
-            f" les événements, les calendriers académiques, et autres informations pertinentes."
-            f" Tu dois fournir des réponses précises et détaillées, collecter des commentaires et des suggestions pour améliorer les services de l'école,"
-            f" et t'améliorer au fil du temps grâce aux interactions avec les utilisateurs."
-            f" Tu dois toujours répondre en français et être capable de gérer des conversations complexes en suivant le contexte. Analyse toujours le contexte pour savoir si des éléments répondent à la question et utilise les dans ta réponse si ils sont pertinents."
-            #f" A chaque question, tu auras 5 éléments de contexte à traiter, "
-            f"\n\n{combined_context}\n\nQuestion : {question}\nRéponse :"
-        )'''
-        prompt = (        
+        combined_context = "\n\n".join([f"Contexte {i+1}:\n{ctx['context']}" for i, ctx in enumerate(top_k_contexts)])
+        print(combined_context)
+        prompt = (
             f"Tu es un chatbot éducatif, utile et respectueux conçu pour l'université Evry Paris-Saclay. "
             f"Ton rôle est de répondre aux questions des utilisateurs concernant des différents informations sur des éléments de l'université, "
             f"Tu dois fournir des réponses précises et détaillées en utilisant le contexte - provenant de la base de données de l'université - fourni dans le texte, "
@@ -125,12 +110,12 @@ def get_answer_combined(question, index, id_map):
             f"Si tu ne connais pas la réponse à une question, ne partage pas de fausses informations. Dis simplement que tu ne sais pas. "
             f"Tu dois toujours répondre en français et être capable de gérer des conversations complexes en suivant le contexte.\n\n"
             f"Tu dois toujours sélectionner toi même les éléments pertinents du contexte auxquels tu dois répondre.\n\n"
-            f"Voici quelques exemples du format des contextes qui te seront fournis DEBUT EXEMPLE:\n\n"
+            '''f"Voici quelques exemples du format des contextes qui te seront fournis DEBUT EXEMPLE:\n\n"
             f"['Collection: nombre-detudiants, Annee_de_linscription: 2018, Nationalité - continent: Afrique, classe_dage: 25 - 29 ans, CSP parents: sans objet ou non renseigné, Sexe: F, Nationalite_francaise_ON: N, Nationalite_-_Pays: CAMEROUNAIS(E), Neo-bachelier_ON: N, Groupe de bac: Bac étranger, Bac_serie: Bac étranger, Bac_Mention: Bien, Lieu du bac: Etranger, Composante: UFR SHS, Néo-entrants (O/N): O, Cursus_LMD: cursus M, Niveau: bac+5, Type de diplôme: Master, Etape: M2, Diplôme_Saclay: Diplôme Saclay, Regime: initiale, Etudiant_Oui-si: Oui, Redoublement: Non-redoublant, nombre_etudiants: 1', 'Collection: nombre-detudiants, Annee_de_linscription: 2018, Nationalité - continent: Europe, classe_dage: moins de 18 ans, CSP parents: sans objet ou non renseigné, Sexe: F, Nationalite_francaise_ON: O, Nationalite_-_Pays: FRANCAIS(E), Neo-bachelier_ON: O, Groupe de bac: Bac techno, Bac_serie: STMG, Bac_Mention: Bien, Lieu du bac: Essonne, Composante: IUT, Néo-entrants (O/N): O, Cursus_LMD: cursus L, Niveau: bac+1, Type de diplôme: DUT, Etape: DUT1, Diplôme_Saclay: Diplôme UEVE, Regime: apprentis, Etudiant_Oui-si: Oui, Redoublement: Non-redoublant, nombre_etudiants: 1']"
-            f"FIN EXEMPLE\n\n"
+            f"FIN EXEMPLE\n\n"'''
             f"Question: {question}\n\n"
             f"{combined_context}\n\n"
-            f"Réponds à la question en te basant sur les contextes ci-dessus. Ta réponse doit être précise et détaillée :\nRéponse :"
+            f"Réponds simplement à la question en te basant sur les contextes ci-dessus. Ta réponse doit être précise et détaillée, n'ajoute pas de commentaire ou d'instructions inutiles. N'ajoute pas de **Instructions** à la fin du message.:\nRéponse :"
         )
 
         inputs = tokenizer(prompt, return_tensors="pt").to("cuda" if torch.cuda.is_available() else "cpu")
@@ -145,9 +130,8 @@ def get_answer_combined(question, index, id_map):
                 top_p=0.9,
             )
             gen_text = tokenizer.decode(gen_tokens[0], skip_special_tokens=True)
-            # Extraire uniquement la partie de la réponse générée par le modèle
             response = gen_text.split('Réponse :', 1)[-1].strip()
-            print(f"Réponse générée: {response}")
+            print(f"Réponse générée : {response}")
             return response
         except Exception as e:
             print(f"Erreur pendant la génération de la réponse: {e}")
@@ -166,9 +150,9 @@ def get_answer():
     if not question:
         return jsonify({'error': 'No question provided'}), 400
 
-    answer = get_answer_combined(question, faiss_index, id_map)
+    answer = get_answer_combined(question, documents)
     print("answer : ", answer)
-    return jsonify(answer)
+    return jsonify({'answer': answer})
 
 # Routes pour interagir avec la base de données MongoDB
 @app.route('/collection/<collection_name>', methods=['GET'])
@@ -234,4 +218,4 @@ def add_suggestion():
         return str(e), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=5000)
