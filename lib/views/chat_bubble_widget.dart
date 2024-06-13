@@ -2,7 +2,6 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:projet_info_s8_gpt/utils/chat_database_interface.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -109,7 +108,11 @@ class _ChatBubbleState extends State<ChatBubble> {
                     color: Colors.transparent,
                     icon: Icon(
                       Icons.thumb_up,
-                      color: chat?.good == 1 ? Colors.green : Colors.white,
+                      color: chat?.good == 1
+                          ? Colors.green
+                          : (Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : Colors.black),
                     ),
                     onPressed: () {
                       if (chat?.good == 1) {
@@ -127,7 +130,11 @@ class _ChatBubbleState extends State<ChatBubble> {
                     color: Colors.transparent,
                     icon: Icon(
                       Icons.thumb_down,
-                      color: chat?.good == -1 ? Colors.red : Colors.white,
+                      color: chat?.good == -1
+                          ? Colors.red
+                          : (Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : Colors.black),
                     ),
                     onPressed: () {
                       if (chat?.good == -1) {

@@ -41,7 +41,7 @@ class ConversationProvider extends ChangeNotifier {
 
   Future<void> updateSelectedConversation(int oldID, int newID) async {
     await _databaseInterface.updateSelectedConversation(oldID, newID);
-    debugPrint("New conversation selected : $newID");
+    debugPrint("Conversation selected : $newID");
     loadConversations();
   }
 }
