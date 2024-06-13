@@ -4,6 +4,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 from sentence_transformers import SentenceTransformer
 from pymongo import MongoClient
 from flask import Flask, request, jsonify
+from flask_talisman import Talisman
 from bson import ObjectId
 from datetime import datetime
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -11,6 +12,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 
 app = Flask(__name__)
+#Talisman(app)
 
 # Désactiver les opérations personnalisées oneDNN et avertissement de symlink Hugging Face
 os.environ['TF_ENABLE_ONEDNN_OPTS'] = '0'
@@ -55,7 +57,6 @@ def get_documents_from_db():
         collection = db[collection_name]
         docs = list(collection.find({}))
         for doc in docs:
-            #doc_text = " ".join([str(value) for key, value in doc.items() if key != '_id'])
             doc_text = f"Collection: {collection_name}, " + " ".join([f"{key}: {value}" for key, value in doc.items() if key != '_id'])
             documents.append((collection_name, doc['_id'], doc_text))
     return documents
@@ -65,11 +66,10 @@ documents = get_documents_from_db()
 
 # Fonction pour vectoriser les documents et la question
 def vectorize_documents_and_question(question, documents):
-    contexts = [doc[2] for doc in documents]  # Extraire les textes des documents
-    #contexts = [f"Collection: {doc[0]}, Texte: {doc[2]}" for doc in documents]
-    vectorizer = TfidfVectorizer().fit(contexts + [question])  # Ajuster le vectoriseur sur les contextes et la question
-    context_vectors = vectorizer.transform(contexts).toarray()  # Transformer les contextes en vecteurs
-    question_vector = vectorizer.transform([question]).toarray()[0]  # Transformer la question en vecteur
+    contexts = [doc[2] for doc in documents]
+    vectorizer = TfidfVectorizer().fit(contexts + [question])
+    context_vectors = vectorizer.transform(contexts).toarray()
+    question_vector = vectorizer.transform([question]).toarray()[0]
     return context_vectors, question_vector
 
 # Fonction pour trouver les contextes pertinents
@@ -80,17 +80,26 @@ def find_relevant_contexts(question, documents):
 
     # Calculer les similarités cosinus
     similarities = cosine_similarity([question_vector], context_vectors).flatten()
-    top_k_indices = np.argsort(similarities)[-5:][::-1]  # Indices des 5 contextes les plus similaires, en ordre décroissant
+
+    # Filtrer les similarités inférieures à 0.2
+    filtered_indices = [i for i, similarity in enumerate(similarities) if similarity >= 0.2]
+
+    if not filtered_indices:
+        print("Aucun contexte pertinent trouvé.")
+        return
+
+    # Obtenir les indices des contextes les plus similaires, triés par ordre décroissant
+    top_k_indices = np.argsort(similarities[filtered_indices])[-5:][::-1]
 
     top_k_contexts = []
     for idx in top_k_indices:
-        collection_name, doc_id, context_text = documents[idx]
+        collection_name, doc_id, context_text = documents[filtered_indices[idx]]
         top_k_contexts.append({
             "collection": collection_name,
             "document_id": doc_id,
             "context": context_text
         })
-    
+
     print(f"Contextes pertinents trouvés: {top_k_contexts}")
     return top_k_contexts
 
@@ -100,44 +109,63 @@ def get_answer_combined(question, documents):
     if top_k_contexts:
         combined_context = "\n\n".join([f"Contexte {i+1}:\n{ctx['context']}" for i, ctx in enumerate(top_k_contexts)])
         print(combined_context)
+
         prompt = (
-            f"Tu es un chatbot éducatif, utile et respectueux conçu pour l'université Evry Paris-Saclay. "
-            f"Ton rôle est de répondre aux questions des utilisateurs concernant des différents informations sur des éléments de l'université, "
-            f"Tu dois fournir des réponses précises et détaillées en utilisant le contexte - provenant de la base de données de l'université - fourni dans le texte, "
-            f"Tu peux recevoir du contexte de la base de données de l'université et de l'historique de la conversation pour générer une réponse. "
-            f"Si aucun contexte n'est fourni, le champ 'Contexte : ' sera vide. Dans ce cas, tu peux générer une réponse basée sur tes connaissances générales sur l'université. "
-            f"Si une question n'a pas de sens ou n'est pas factuellement cohérente, explique pourquoi au lieu de fournir une réponse incorrecte. "
-            f"Si tu ne connais pas la réponse à une question, ne partage pas de fausses informations. Dis simplement que tu ne sais pas. "
-            f"Tu dois toujours répondre en français et être capable de gérer des conversations complexes en suivant le contexte.\n\n"
-            f"Tu dois toujours sélectionner toi même les éléments pertinents du contexte auxquels tu dois répondre.\n\n"
-            '''f"Voici quelques exemples du format des contextes qui te seront fournis DEBUT EXEMPLE:\n\n"
-            f"['Collection: nombre-detudiants, Annee_de_linscription: 2018, Nationalité - continent: Afrique, classe_dage: 25 - 29 ans, CSP parents: sans objet ou non renseigné, Sexe: F, Nationalite_francaise_ON: N, Nationalite_-_Pays: CAMEROUNAIS(E), Neo-bachelier_ON: N, Groupe de bac: Bac étranger, Bac_serie: Bac étranger, Bac_Mention: Bien, Lieu du bac: Etranger, Composante: UFR SHS, Néo-entrants (O/N): O, Cursus_LMD: cursus M, Niveau: bac+5, Type de diplôme: Master, Etape: M2, Diplôme_Saclay: Diplôme Saclay, Regime: initiale, Etudiant_Oui-si: Oui, Redoublement: Non-redoublant, nombre_etudiants: 1', 'Collection: nombre-detudiants, Annee_de_linscription: 2018, Nationalité - continent: Europe, classe_dage: moins de 18 ans, CSP parents: sans objet ou non renseigné, Sexe: F, Nationalite_francaise_ON: O, Nationalite_-_Pays: FRANCAIS(E), Neo-bachelier_ON: O, Groupe de bac: Bac techno, Bac_serie: STMG, Bac_Mention: Bien, Lieu du bac: Essonne, Composante: IUT, Néo-entrants (O/N): O, Cursus_LMD: cursus L, Niveau: bac+1, Type de diplôme: DUT, Etape: DUT1, Diplôme_Saclay: Diplôme UEVE, Regime: apprentis, Etudiant_Oui-si: Oui, Redoublement: Non-redoublant, nombre_etudiants: 1']"
-            f"FIN EXEMPLE\n\n"'''
-            f"Question: {question}\n\n"
+            "<end_of_turn>\n"
+            f"<start_of_turn>user\n"
+            f"Tu es un chatbot éducatif, utile et respectueux, conçu pour l'université Evry Paris-Saclay. "
+            f"Ton rôle est de répondre aux questions des utilisateurs concernant différents éléments et informations sur l'université. "
+            f"Tu dois fournir des réponses précises et détaillées en utilisant le contexte provenant de la base de données de l'université. "
+            f"Tu es capable d'utiliser des contextes spécifiques et l'historique de la conversation pour générer des réponses. "
+            f"Si une question est incohérente ou ne fait pas de sens, explique pourquoi et évite de donner des informations incorrectes. "
+            f"Si tu ne connais pas la réponse à une question, il est important de ne pas donner de fausses informations ; dis simplement que tu ne sais pas. "
+            f"Si le contexte fourni n'est pas pertinent ou n'existe pas, tu peux te baser sur tes connaissances générales à propos de l'université et répondre à la question. "
+            f"Tu dois toujours répondre en français et être capable de gérer des conversations complexes tout en suivant le contexte.\n\n"
+            f"Utilise les contextes suivants pour répondre à la question seulement si les notes de similarité sont élevées. Sinon, base ta réponse sur tes connaissances générales.\n\n"
+            f"Question : {question}\n\n"
             f"{combined_context}\n\n"
-            f"Réponds simplement à la question en te basant sur les contextes ci-dessus. Ta réponse doit être précise et détaillée, n'ajoute pas de commentaire ou d'instructions inutiles. N'ajoute pas de **Instructions** à la fin du message.:\nRéponse :"
+            f"Réponds simplement à la question en te basant sur les contextes ci-dessus. Ta réponse doit être précise et détaillée. "
+            f"Ne fournis pas de commentaires ou d'instructions inutiles. N'ajoute pas de **Instructions** à la fin du message.<end_of_turn>\n\n<start_of_turn>model\nRéponse :"
+        )
+    else :
+        prompt = (
+            f"<end_of_turn>\n"
+            f"<start_of_turn>user\n"
+            f"Tu es un chatbot éducatif, utile et respectueux, conçu pour l'université Evry Paris-Saclay. "
+            f"Ton rôle est de répondre aux questions des utilisateurs concernant différents éléments et informations sur l'université. "
+            f"Tu dois fournir des réponses précises et détaillées en utilisant le contexte provenant de la base de données de l'université. "
+            f"Tu es capable d'utiliser des contextes spécifiques et l'historique de la conversation pour générer des réponses. "
+            f"Si une question est incohérente ou ne fait pas de sens, explique pourquoi et évite de donner des informations incorrectes. "
+            f"Si tu ne connais pas la réponse à une question, il est important de ne pas donner de fausses informations ; dis simplement que tu ne sais pas. "
+            f"Si le contexte fourni n'est pas pertinent ou n'existe pas, tu peux te baser sur tes connaissances générales à propos de l'université et répondre à la question. "
+            f"Tu dois toujours répondre en français et être capable de gérer des conversations complexes tout en suivant le contexte.\n\n"
+            f"Utilise les contextes suivants pour répondre à la question seulement si les notes de similarité sont élevées. Sinon, base ta réponse sur tes connaissances générales.\n\n"
+            f"Question : {question}\n\n"
+            f"Ta réponse doit être précise et détaillée. "
+            f"Ne fournis pas de commentaires ou d'instructions inutiles. N'ajoute pas de **Instructions** à la fin du message.<end_of_turn>\n\n<start_of_turn>model\nRéponse :"
         )
 
-        inputs = tokenizer(prompt, return_tensors="pt").to("cuda" if torch.cuda.is_available() else "cpu")
 
-        print("Génération de la réponse...")
-        try:
-            gen_tokens = model.generate(
-                inputs.input_ids,
-                max_new_tokens=150,
-                do_sample=True,
-                temperature=0.7,
-                top_p=0.9,
-            )
-            gen_text = tokenizer.decode(gen_tokens[0], skip_special_tokens=True)
-            response = gen_text.split('Réponse :', 1)[-1].strip()
-            print(f"Réponse générée : {response}")
-            return response
-        except Exception as e:
-            print(f"Erreur pendant la génération de la réponse: {e}")
-            return "Une erreur est survenue pendant la génération de la réponse."
-    else:
-        return "Aucun contexte pertinent trouvé."
+    inputs = tokenizer(prompt, return_tensors="pt").to("cuda" if torch.cuda.is_available() else "cpu")
+
+    print("Génération de la réponse...")
+    try:
+        gen_tokens = model.generate(
+            inputs.input_ids,
+            max_new_tokens=150,
+            do_sample=True,
+            temperature=0.7,
+            top_p=0.9,
+        )
+        gen_text = tokenizer.decode(gen_tokens[0], skip_special_tokens=True)
+        print(f"gen_text : {gen_text}")
+        response = gen_text.split('Réponse :', 1)[-1].strip()
+        print(f"Réponse générée : {response}")
+        return response
+    except Exception as e:
+        print(f"Erreur pendant la génération de la réponse: {e}")
+        return "Une erreur est survenue pendant la génération de la réponse."
+    
 
 @app.route('/')
 def home():
@@ -161,7 +189,7 @@ def get_all_from_collection(collection_name):
         collection = db[collection_name]
         data = list(collection.find())
         for item in data:
-            item['_id'] = str(item['_id'])  # Convertir ObjectId en chaîne de caractères
+            item['_id'] = str(item['_id'])
         return jsonify(data)
     except Exception as e:
         return str(e), 500
@@ -172,7 +200,7 @@ def get_from_collection_by_id(collection_name, id):
         collection = db[collection_name]
         data = collection.find_one({'_id': ObjectId(id)})
         if data:
-            data['_id'] = str(data['_id'])  # Convertir ObjectId en chaîne de caractères
+            data['_id'] = str(data['_id'])
             return jsonify(data)
         else:
             return jsonify({'error': 'Document not found'}), 404
@@ -191,7 +219,7 @@ def query_collection(collection_name):
         collection = db[collection_name]
         data = list(collection.find(query))
         for item in data:
-            item['_id'] = str(item['_id'])  # Convertir ObjectId en chaîne de caractères
+            item['_id'] = str(item['_id'])
         return jsonify(data)
     except Exception as e:
         return str(e), 500
@@ -218,4 +246,6 @@ def add_suggestion():
         return str(e), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    # Utiliser SSL pour HTTPS
+    ssl_context = ('localhost.pem', 'localhost-key.pem')
+    app.run(host='0.0.0.0', port=5000, ssl_context=ssl_context)
