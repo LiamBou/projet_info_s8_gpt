@@ -22,6 +22,10 @@ class _UserInputState extends State<UserInput> {
 
   @override
   Widget build(BuildContext context) {
+    List<Chat> chats = context
+            .watch<ChatProvider>()
+            .chatsByConversation[widget.conversationId] ??
+        [];
     return Container(
       margin: const EdgeInsets.all(10),
       child: TextField(
@@ -29,6 +33,7 @@ class _UserInputState extends State<UserInput> {
         minLines: 1,
         maxLines: 6,
         autofocus: false,
+        textCapitalization: TextCapitalization.sentences,
         decoration: InputDecoration(
           hintText: 'Posez une question...',
           suffixIcon: IconButton(
@@ -37,25 +42,34 @@ class _UserInputState extends State<UserInput> {
                 if (_controller.text.trim().isEmpty) {
                   return;
                 }
-                context.read<ChatProvider>().addChat(Chat(
-                    message: _controller.text,
-                    isUser: true,
-                    conversationId: widget.conversationId,
-                    sentAt: DateTime.now()));
-                widget.setDisplayLoading(true);
-                ChatApiInterface.instance
-                    .askPrompt(
-                        Chat(
-                            message: _controller.text,
-                            isUser: true,
-                            conversationId: widget.conversationId,
-                            sentAt: DateTime.now()),
-                        widget.conversationId)
+                if (chats.isNotEmpty && chats.last.isUser == true) {
+                  return;
+                }
+                context
+                    .read<ChatProvider>()
+                    .addChat(Chat(
+                        message: _controller.text,
+                        isUser: true,
+                        conversationId: widget.conversationId,
+                        sentAt: DateTime.now()))
                     .then((value) {
-                  widget.setDisplayLoading(false);
-                  context.read<ChatProvider>().addChat(value!);
+                  widget.setDisplayLoading(true);
+                  debugPrint("Chats: $chats");
+                  // Ask the prompt to the API with 3 or 2 or last previous chats and the current question
+                  ChatApiInterface.instance
+                      .askPromptWithPreviousChats(
+                          context
+                                  .read<ChatProvider>()
+                                  .chatsByConversation[widget.conversationId] ??
+                              [],
+                          _controller.text,
+                          widget.conversationId)
+                      .then((value) {
+                    widget.setDisplayLoading(false);
+                    context.read<ChatProvider>().addChat(value!);
+                  });
+                  _controller.clear();
                 });
-                _controller.clear();
               }),
         ),
         controller: _controller,

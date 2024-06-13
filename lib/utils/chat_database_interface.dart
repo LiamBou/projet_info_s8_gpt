@@ -12,7 +12,7 @@ class ChatDatabaseInterface {
 
   static const String databaseName = 'chat.db';
 
-  static const int versionNumber = 6;
+  static const int versionNumber = 7;
 
   static const String colId = 'id';
 
@@ -21,6 +21,7 @@ class ChatDatabaseInterface {
   static const String colIsUser = 'isUser';
   static const String colConversationId = 'conversationId';
   static const String colSentAt = 'sentAt';
+  static const String colGood = 'good';
 
   static const String conversationTableName = 'Conversation';
   static const String colName = 'name';
@@ -71,6 +72,7 @@ class ChatDatabaseInterface {
         $colIsUser INTEGER NOT NULL,
         $colConversationId INTEGER NOT NULL,
         $colSentAt TEXT NOT NULL,
+        $colGood INTEGER,
         FOREIGN KEY ($colConversationId) REFERENCES $conversationTableName($colId) ON DELETE CASCADE
       )
     ''');
@@ -131,6 +133,15 @@ class ChatDatabaseInterface {
       where: '$colId = ?',
       whereArgs: [chat.id],
     );
+  }
+
+  Future<int> updateChatGood(int id, int good) async {
+    final Database db = await database;
+    return await db.rawUpdate('''
+      UPDATE $chatTableName
+      SET $colGood = ?
+      WHERE $colId = ?
+    ''', [good, id]);
   }
 
   Future<int> deleteChat(int id) async {

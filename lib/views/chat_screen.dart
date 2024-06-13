@@ -1,5 +1,4 @@
 import 'package:collection/collection.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:projet_info_s8_gpt/models/conversation.dart';
@@ -18,7 +17,7 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -77,13 +76,14 @@ class _ChatScreenState extends State<ChatScreen> {
                     ...chatProvider.chatsByConversation[conversation.id ?? 0]!
                         .map<Widget>(
                       (Chat chat) => ChatBubble(
+                        chatId: chat.id ?? 0,
                         text: chat.message,
                         isUser: chat.isUser,
                       ),
                     ),
                     (displayLoading)
                         ? const ChatBubble(
-                            text: "", isUser: false, isLoading: true)
+                            chatId: 0, text: "", isUser: false, isLoading: true)
                         : const SizedBox(),
                   ].reversed.toList(),
                 ),

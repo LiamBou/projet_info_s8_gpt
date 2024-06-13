@@ -1,12 +1,15 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:projet_info_s8_gpt/providers/chat_provider.dart';
 import 'package:projet_info_s8_gpt/providers/conversation_provider.dart';
+import 'package:projet_info_s8_gpt/utils/http_overrides.dart';
 import 'package:provider/provider.dart';
 import 'views/chat_screen.dart';
 import 'views/drawer_widget.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  HttpOverrides.global = MyHttpOverrides();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (_) => ChatProvider()),
@@ -29,7 +32,7 @@ class MyApp extends StatelessWidget {
       builder: (_, ThemeMode currentTheme, __) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          title: 'GPT-Evry-Chatbot',
+          title: 'Chatbot-Evry-Chatbot',
           theme: ThemeData(
             primarySwatch: Colors.blue,
             useMaterial3: true,
@@ -41,7 +44,7 @@ class MyApp extends StatelessWidget {
           ),
           themeMode: currentTheme,
           home: MyHomePage(
-              title: 'GPT App', themeModeNotifier: themeModeNotifier),
+              title: 'Chatbot Saclay', themeModeNotifier: themeModeNotifier),
         );
       },
     );

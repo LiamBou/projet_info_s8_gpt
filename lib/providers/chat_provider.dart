@@ -7,7 +7,7 @@ class ChatProvider extends ChangeNotifier {
       ChatDatabaseInterface.instance;
 
   List<Chat> _chatList = [];
-  Map<int, List<Chat>> _chatsByConversation = {};
+  final Map<int, List<Chat>> _chatsByConversation = {};
 
   List<Chat> get chatList => _chatList;
   Map<int, List<Chat>> get chatsByConversation => _chatsByConversation;
@@ -47,6 +47,11 @@ class ChatProvider extends ChangeNotifier {
 
   Future<void> deleteChatsByConversation(int conversationId) async {
     await _databaseInterface.deleteChatsByConversation(conversationId);
+    loadChats();
+  }
+
+  Future<void> updateChatGood(int id, int good) async {
+    await _databaseInterface.updateChatGood(id, good);
     loadChats();
   }
 }
