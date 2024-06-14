@@ -5,7 +5,7 @@ import 'package:projet_info_s8_gpt/providers/conversation_provider.dart';
 import 'package:projet_info_s8_gpt/utils/http_overrides.dart';
 import 'package:provider/provider.dart';
 import 'views/chat_screen.dart';
-import 'views/drawer_widget.dart';
+import 'views/drawer.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
