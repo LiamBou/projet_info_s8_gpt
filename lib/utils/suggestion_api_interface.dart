@@ -14,7 +14,7 @@ class SuggestionApiInterface {
     String description = suggestion.description;
     String date = suggestion.date;
     final resp = await http.post(Uri.parse(
-        "http://10.4.17.150:5000/suggestions?Username=$username&Suggestion=$description&Date=$date"));
+        "https://172.20.10.2:5000/suggestions?Username=$username&Suggestion=$description&Date=$date"));
 
     if (resp.statusCode != 201) {
       if (!context.mounted) return;

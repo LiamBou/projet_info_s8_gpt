@@ -6,8 +6,8 @@ import 'package:projet_info_s8_gpt/providers/conversation_provider.dart';
 import 'package:provider/provider.dart';
 import '../models/chat.dart';
 import '../providers/chat_provider.dart';
-import 'chat_bubble_widget.dart';
-import 'user_input.dart';
+import '../widgets/chat_bubble.dart';
+import '../widgets/user_input.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});

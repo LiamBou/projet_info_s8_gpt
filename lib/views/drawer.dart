@@ -19,6 +19,7 @@ class CustomDrawer extends StatefulWidget {
 class _CustomDrawerState extends State<CustomDrawer> {
   @override
   Widget build(BuildContext context) {
+    context.watch<ConversationProvider>().loadConversations();
     List<Conversation> conversations =
         context.watch<ConversationProvider>().conversationList;
     Conversation? selectedConversation = context
@@ -88,12 +89,18 @@ class _CustomDrawerState extends State<CustomDrawer> {
                                   return;
                                 }
                                 Navigator.of(context).pop();
-                                SuggestionApiInterface.instance.putSuggestion(
-                                    Suggestion(
-                                        username: _userController.text,
-                                        description: _suggestionController.text,
-                                        date: DateTime.now().toString()),
-                                    context);
+                                SuggestionApiInterface.instance
+                                    .putSuggestion(
+                                        Suggestion(
+                                            username: _userController.text,
+                                            description:
+                                                _suggestionController.text,
+                                            date: DateTime.now().toString()),
+                                        context)
+                                    .then((value) {
+                                  _userController.clear();
+                                  _suggestionController.clear();
+                                });
                               },
                               child: const Text('Envoyer'),
                             ),
@@ -140,6 +147,9 @@ class _CustomDrawerState extends State<CustomDrawer> {
                             context
                                 .read<ConversationProvider>()
                                 .deleteConversation(conversations[i].id ?? 0);
+                            context
+                                .read<ConversationProvider>()
+                                .loadConversations();
                           },
                           icon: const Icon(Icons.delete)),
                       title: Text(conversations[i].name),
@@ -187,6 +197,7 @@ class _CustomDrawerState extends State<CustomDrawer> {
             margin: const EdgeInsets.all(10),
             child: ElevatedButton(
               onPressed: () {
+                context.read<ConversationProvider>().loadConversations();
                 context.read<ConversationProvider>().addConversation(
                     Conversation(
                         id: conversations.length + 1,
