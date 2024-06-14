@@ -26,16 +26,20 @@ Pour cloner et exécuter cette application, vous aurez besoin de [Git](https://g
 
 ### Cloner le dépôt
 
+```
 git clone https://github.com/LiamBou/projet_info_s8_gpt.git
 cd projet_info_s8_gpt
+```
 
 ### Installer les dépendances
-
+```
 flutter pub get
+```
 
 ### Exécuter l'application
-
+```
 flutter run
+```
 
 ## Auteurs
 
