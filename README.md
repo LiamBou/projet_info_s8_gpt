@@ -10,6 +10,7 @@ Cette application Flutter est l'interface utilisateur de notre chatbot conçu po
 
 ## Structure du Projet
 
+```
 lib/
 ├── main.dart                     # Point d'entrée principal de l'application
 ├── models/                       # Modèles de données (Data Models)
@@ -17,6 +18,7 @@ lib/
 ├── utils/                        # Utilitaires (Utilities)
 ├── views/                        # Vues (UI Screens)
 ├── widgets/                      # Widgets personnalisés (Custom Widgets)
+```
 
 ## Installation
 
