@@ -6,6 +6,8 @@ Ce projet développe un chatbot éducatif conçu pour répondre aux questions de
 
   ### Transformateurs et Modèles de Langage
 
+**Model utilisé : ** `Ggemma-1.1-7b-it`
+
 **Transformers (Hugging Face):** Utilisé pour le chargement et l'inférence des modèles de langage, notamment avec AutoTokenizer et AutoModelForCausalLM.
 
 **BitsAndBytes :** Employé pour la quantification des modèles afin de réduire l'utilisation de la mémoire et accélérer les calculs
