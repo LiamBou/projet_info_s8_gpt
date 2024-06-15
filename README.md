@@ -2,6 +2,9 @@
 # Projet ChatBot Université Evry Paris-Saclay 
 
 Ce projet développe un chatbot éducatif conçu pour répondre aux questions des utilisateurs concernant l'Université Evry Paris-Saclay en utilisant des techniques d'intelligence artificielle avancées. Le chatbot analyse les questions et extrait des réponses pertinentes à partir de documents stockés dans une base de données MongoDB.
+
+Pour plus de détails sur le projet, veuillez consultez le [README de la branche `main`](https://github.com/LiamBou/projet_info_s8_gpt/blob/main/README.md).
+
 ## Bibliothèques et Technologies Utilisées
 
   ### Transformateurs et Modèles de Langage
