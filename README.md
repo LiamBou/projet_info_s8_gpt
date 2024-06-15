@@ -2,7 +2,7 @@
 
 Cette application Flutter est l'interface utilisateur de notre chatbot conçu pour l'université Paris-Saclay. Elle permet aux utilisateurs de discuter avec le chatbot et de recevoir des réponses en temps réel. L'application est conçue pour être simple et intuitive, avec une interface utilisateur conviviale.
 
-Pour plus de détails, consultez le [README de la branche `main`](https://github.com/LiamBou/projet_info_s8_gpt/blob/main/README.md).
+Pour plus de détails sur le projet, veuillez consultez le [README de la branche `main`](https://github.com/LiamBou/projet_info_s8_gpt/blob/main/README.md).
 
 ## Fonctionnalités
 
